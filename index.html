@@ -200,11 +200,18 @@ header.nav.scrolled{background:rgba(10,11,14,.72);backdrop-filter:blur(16px) sat
 
 /* ================= VERTICALS ================= */
 .verticals{padding:120px 0}
-.vert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-@media(max-width:900px){.vert-grid{grid-template-columns:1fr}}
+/* asymmetric, diagonal rhythm: cards step down like the flow through a pipe.
+   margin (not transform) so it never fights the reveal/hover transforms. */
+.vert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+.vert-grid>.vcard:nth-child(2){margin-top:34px}
+.vert-grid>.vcard:nth-child(3){margin-top:68px}
+@media(max-width:900px){.vert-grid{grid-template-columns:1fr}.vert-grid>.vcard{margin-top:0}}
 .vcard{position:relative;padding:40px 34px 36px;border-radius:var(--radius);overflow:hidden;
   background:linear-gradient(180deg,var(--ink-card),var(--ink-soft));border:1px solid var(--line);
   transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
+/* first pillar reads as the anchor: a touch taller, brighter edge, accent rule already drawn */
+.vert-grid>.vcard:first-child{border-color:var(--line-strong);padding-top:48px;padding-bottom:44px}
+.vert-grid>.vcard:first-child::before{width:72px}
 .vcard::before{content:"";position:absolute;top:0;left:0;height:3px;width:48px;background:var(--accent);transition:width .5s var(--ease)}
 .vcard::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 70% at 50% -10%,var(--accent-glow),transparent 55%);opacity:0;transition:opacity .45s}
 .vcard:hover{transform:translateY(-8px);border-color:var(--line-strong);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
