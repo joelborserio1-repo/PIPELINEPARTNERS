@@ -103,6 +103,23 @@
     window.addEventListener("scroll", onScrollNav, { passive: true });
   }
 
+  /* ---------- Mobile menu toggle ---------- */
+  var navToggle = document.getElementById("navToggle");
+  var mobileMenu = document.getElementById("mobileMenu");
+  if (navToggle && mobileMenu) {
+    var setMenu = function (open) {
+      mobileMenu.classList.toggle("open", open);
+      navToggle.classList.toggle("open", open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    navToggle.addEventListener("click", function () {
+      setMenu(!mobileMenu.classList.contains("open"));
+    });
+    mobileMenu.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setMenu(false);
+    });
+  }
+
   /* ---------- Scroll reveal + connector draw ---------- */
   var revealEls = function () { return Array.prototype.slice.call(document.querySelectorAll(".reveal")); };
   if ("IntersectionObserver" in window && !reduceMotion) {
