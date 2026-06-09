@@ -13,7 +13,7 @@ window.PP = {
     name: "Pipeline Partners",
     motto: "Keep the work flowing.",
     // Replace with the live domain before launch. Used for canonical and absolute URLs.
-    domain: "https://REPLACE-WITH-LIVE-DOMAIN",
+    domain: "https://pipelinepartners.com.au",
     bookingUrl: "#enquire" // anchor to the form section; swap for a real calendar link if wanted
   },
 
