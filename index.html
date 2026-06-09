@@ -39,6 +39,20 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
+
+  /* Lead conversion hook. Fires once when a lead is submitted. The
+     GoHighLevel embed posts a message when its form is sent, so we listen
+     for it and push a generate_lead event plus the Google Ads conversion.
+     You can also call ppTrackLead() directly from a thank-you redirect. */
+  function ppTrackLead(){
+    window.dataLayer.push({ event:'generate_lead', form:'pipeline-partners' });
+    /* Google Ads conversion (uncomment + replace AW-XXXXXXX/Yyyy once live): */
+    /* gtag('event','conversion',{ send_to:'AW-XXXXXXX/Yyyy' }); */
+  }
+  window.addEventListener('message', function(e){
+    var d = e && e.data;
+    if(d === 'form-submitted' || (d && d.type === 'form-submitted')) ppTrackLead();
+  });
 </script>
 <!--
   GTM head (uncomment + replace GTM-XXXXXXX):
@@ -47,6 +61,10 @@
   GA4 (uncomment + replace G-XXXXXXX):
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
   <script>gtag('js', new Date()); gtag('config','G-XXXXXXX');</script>
+
+  Google Ads tag (uncomment + replace AW-XXXXXXX, then fill the send_to in ppTrackLead above):
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
+  <script>gtag('js', new Date()); gtag('config','AW-XXXXXXX');</script>
 -->
 
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
@@ -254,6 +272,22 @@ header.nav.scrolled{background:rgba(10,11,14,.72);backdrop-filter:blur(16px) sat
 .guar-list{margin-top:26px;display:flex;flex-direction:column;gap:14px}
 .guar-list li{list-style:none;display:flex;gap:13px;align-items:flex-start;font-size:1.04rem;color:var(--on-ink)}
 .guar-list svg{width:22px;height:22px;flex:0 0 auto;color:var(--accent);margin-top:2px}
+
+/* ================= PROOF ================= */
+.proof{padding:120px 0}
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+@media(max-width:900px){.proof-grid{grid-template-columns:1fr;gap:32px}}
+.proof h2{font-size:clamp(1.9rem,4.4vw,2.9rem);margin-top:18px;max-width:18ch}
+.proof .lede{margin-top:20px;color:var(--on-ink-dim);font-size:1.08rem;max-width:46ch}
+.proof-slot{position:relative;border:1px solid var(--line-strong);border-radius:var(--radius-lg);
+  padding:42px 38px;background:linear-gradient(180deg,var(--ink-card),var(--ink-soft));overflow:hidden}
+.proof-slot::before{content:"";position:absolute;top:0;left:38px;right:38px;height:2px;
+  background:linear-gradient(90deg,var(--accent),transparent);border-radius:2px}
+.proof-claim{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.6vw,1.78rem);
+  line-height:1.22;color:var(--on-ink);letter-spacing:-.02em}
+.proof-tag{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-size:.78rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink-faint)}
+.proof-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent-2)}
 
 /* ================= POSITIONING + COMPARE ================= */
 .compare{padding:120px 0;background:var(--paper);color:var(--on-paper)}
@@ -525,6 +559,28 @@ footer.site{border-top:1px solid var(--line);padding:64px 0 40px}
   </div>
 </section>
 
+<!-- =========================== PROOF ========================= -->
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="proof-grid">
+      <div class="reveal">
+        <span class="eyebrow">Proof</span>
+        <h2>We would rather show nothing than show you lies.</h2>
+        <p class="lede">No invented numbers. No stock testimonials. No borrowed client logos. Real results from real Pipeline Partners clients land here as they come in. Until they do, the one claim we make needs no data.</p>
+      </div>
+      <div class="proof-slot reveal" style="--d:.1s">
+        <!-- ============================================================
+             REAL PROOF SLOT. Replace the statement below with verified
+             testimonials, case studies, or named client results when you
+             have them. Do not fabricate. Keep the honest claim until then.
+        ============================================================ -->
+        <p class="proof-claim">Every lead we send is <span class="accent">exclusive</span>. Yours alone. Never shared, never resold to the firm down the road.</p>
+        <span class="proof-tag">Verified client results appear here</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- =================== POSITIONING + COMPARE ================= -->
 <section class="compare" id="compare">
   <div class="wrap">
@@ -532,8 +588,6 @@ footer.site{border-top:1px solid var(--line);padding:64px 0 40px}
       <span class="eyebrow">Exclusive vs shared</span>
       <p class="big-claim" style="margin-top:18px">Most agencies sell the same lead to four of your competitors. <span class="accent">We sell it once. To you.</span></p>
     </div>
-
-    <!-- Add real testimonials, case studies, or verified numbers here when available. -->
 
     <div class="ctable reveal">
       <div class="cell hcell">What you get</div>

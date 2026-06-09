@@ -53,6 +53,21 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
+
+  /* Lead conversion hook. Fires once when a lead is submitted. The
+     GoHighLevel embed posts a message when its form is sent, so we listen
+     for it and push a generate_lead event plus the Google Ads conversion.
+     The vertical slug rides along so you can segment leads by industry. */
+  function ppTrackLead(){
+    var v = new URLSearchParams(location.search).get('vertical') || 'none';
+    window.dataLayer.push({ event:'generate_lead', form:'pipeline-partners', vertical:v });
+    /* Google Ads conversion (uncomment + replace AW-XXXXXXX/Yyyy once live): */
+    /* gtag('event','conversion',{ send_to:'AW-XXXXXXX/Yyyy' }); */
+  }
+  window.addEventListener('message', function(e){
+    var d = e && e.data;
+    if(d === 'form-submitted' || (d && d.type === 'form-submitted')) ppTrackLead();
+  });
 </script>
 <!--
   GTM head (uncomment + replace GTM-XXXXXXX):
@@ -61,6 +76,10 @@
   GA4 (uncomment + replace G-XXXXXXX):
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
   <script>gtag('js', new Date()); gtag('config','G-XXXXXXX');</script>
+
+  Google Ads tag (uncomment + replace AW-XXXXXXX, then fill the send_to in ppTrackLead above):
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
+  <script>gtag('js', new Date()); gtag('config','AW-XXXXXXX');</script>
 -->
 
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
