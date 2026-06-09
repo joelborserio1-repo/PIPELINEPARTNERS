@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace the domain below with your live domain before launch. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.pipelinepartners.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.pipelinepartners.com/vertical-template.html?vertical=trades</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pipelinepartners.com/vertical-template.html?vertical=fitness</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pipelinepartners.com/vertical-template.html?vertical=clinics</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace the domain below with your live domain before launch.
+Sitemap: https://www.pipelinepartners.com/sitemap.xml
