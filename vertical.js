@@ -49,9 +49,11 @@
     var dom = (PP.brand.domain || "").replace(/\/$/, "");
     setAttr("canonical", "href", dom + "/vertical.html?vertical=" + v.slug);
 
-    text("vHeadline", v.h1);
-    html("vLead", "We run all the marketing for " + esc(v.keyword) +
-      ". Every lead is yours alone, never shared, never resold to a competitor. Hit the agreed minimum or you only pay for what arrives. No leads, no pay.");
+    // Keep the keyword in the eyebrow for ad and search relevance, with the
+    // shared risk reversal headline. vHeadline stays as set in the markup.
+    text("vKicker", "Exclusive " + v.keyword + " leads");
+    html("vLead", "We run all the marketing and guarantee a set number of exclusive " + esc(v.keyword) +
+      " leads every month, yours alone, never shared. If we miss the number, you do not pay. Simple as that.");
     text("vSub", v.heroLine);
     text("cmpHead", "Exclusive " + v.keyword + " leads beat shared, plainly.");
     text("formHead", "Claim your " + lower(v.short) + " area.");
