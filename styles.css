@@ -465,8 +465,11 @@ p{ margin:0 0 1rem; }
 .lp-lede{ max-width:760px; margin:0 auto; text-align:center; }
 .lp-lede .lead{ margin-inline:auto; }
 .lp-points-center{ display:inline-flex; flex-direction:column; gap:.7rem; max-width:540px; margin:1.6rem auto 0; text-align:left; }
-.lp .ghl-shell{ width:fit-content; max-width:100%; margin:clamp(28px,4vw,44px) auto 0; text-align:left; }
+/* The form must be at least 800px wide to render its two-column GHL layout
+   (which also makes it far shorter). Card is wide enough to hold 800 + padding. */
+.lp .ghl-shell{ width:100%; max-width:880px; margin:clamp(28px,4vw,44px) auto 0; text-align:left; }
 .lp .ghl-slot{ justify-content:center; }
+.lp .ghl-slot iframe{ width:100%; min-width:0; }
 .ghl-slot iframe{ max-width:100%; }
 .hero-reassure{ margin:1.5rem auto 0; color:var(--on-dark-faint); font-size:.92rem; max-width:52ch; }
 .nav-aside{ font-size:.9rem; color:var(--on-dark-muted); white-space:nowrap; }

@@ -3,3 +3,9 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Always revalidate CSS and JS so design changes appear without a hard refresh.
+/styles.css
+  Cache-Control: no-cache
+/*.js
+  Cache-Control: no-cache
