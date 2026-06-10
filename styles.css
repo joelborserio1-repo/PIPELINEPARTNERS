@@ -460,10 +460,11 @@ p{ margin:0 0 1rem; }
 
 /* ===================== CAMPAIGN LANDING PAGE (lp.html) ===================== */
 .lp .hero{ min-height:auto; align-items:start; padding-top:clamp(108px,14vh,140px); padding-bottom:clamp(44px,6vw,76px); }
-/* The form is tall (many fields), so the copy centres beside it for balance
-   rather than sitting at the top with a long gap underneath. */
-.lp .hero-grid{ grid-template-columns:1.02fr .98fr; align-items:center; gap:clamp(28px,4vw,56px); }
-.lp .hero-copy{ max-width:46ch; }
+/* The form is tall (many fields), so give it more width and centre the copy
+   beside it. A slightly wider container gives the form fields room to breathe. */
+.lp .hero .wrap{ max-width:1300px; }
+.lp .hero-grid{ grid-template-columns:0.8fr 1.2fr; align-items:center; gap:clamp(28px,4vw,56px); }
+.lp .hero-copy{ max-width:44ch; }
 .hero-reassure{ margin-top:1.6rem; color:var(--on-dark-faint); font-size:.92rem; max-width:42ch; }
 @media (max-width:880px){
   .lp .hero-grid{ grid-template-columns:1fr; align-items:start; }
