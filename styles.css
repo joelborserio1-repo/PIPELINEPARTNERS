@@ -460,17 +460,17 @@ p{ margin:0 0 1rem; }
 
 /* ===================== CAMPAIGN LANDING PAGE (lp.html) ===================== */
 .lp .hero{ min-height:auto; align-items:center; padding-top:clamp(104px,13vh,136px); padding-bottom:clamp(40px,6vw,72px); }
-/* GoHighLevel renders the form at a fixed width and height set inside GHL, so
-   size the card to the form and centre the copy beside it. No stretched voids. */
-.lp .hero .wrap{ max-width:1140px; }
-.lp .hero-grid{ grid-template-columns:1fr auto; align-items:center; gap:clamp(32px,5vw,72px); }
+/* Form column flexes to fit the GHL form (whatever width it is set to in GHL);
+   the copy takes the rest and centres beside it. The form centres in its card. */
+.lp .hero .wrap{ max-width:1200px; }
+.lp .hero-grid{ grid-template-columns:1fr minmax(440px,640px); align-items:center; gap:clamp(32px,5vw,64px); }
 .lp .hero-copy{ max-width:46ch; }
-.lp .ghl-shell{ width:520px; max-width:100%; }
+.lp .ghl-shell{ width:100%; }
+.lp .ghl-slot{ justify-content:center; }
 .hero-reassure{ margin-top:1.6rem; color:var(--on-dark-faint); font-size:.92rem; max-width:42ch; }
 @media (max-width:880px){
   .lp .hero-grid{ grid-template-columns:1fr; align-items:start; }
   .lp .hero-copy{ max-width:none; }
-  .lp .ghl-shell{ width:100%; }
 }
 .nav-aside{ font-size:.9rem; color:var(--on-dark-muted); white-space:nowrap; }
 @media (max-width:620px){ .nav-aside{ display:none; } }
