@@ -54,7 +54,6 @@
     text("vKicker", "Exclusive " + v.keyword + " leads");
     html("vLead", "We run all the marketing and guarantee a set number of exclusive " + esc(v.keyword) +
       " leads every month, yours alone, never shared. If we miss the number, you do not pay. Simple as that.");
-    text("vSub", v.heroLine);
     text("cmpHead", "Exclusive " + v.keyword + " leads beat shared, plainly.");
     text("formHead", "Claim your " + lower(v.short) + " area.");
     html("formLead", "One business per area for " + esc(v.keyword) +
