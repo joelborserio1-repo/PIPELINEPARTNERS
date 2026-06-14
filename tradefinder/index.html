@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pipeline Partners — Trade Lead Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16222B;
+    --paper:#F4F2EC;
+    --card:#FFFFFF;
+    --amber:#F07A1B;
+    --amber-deep:#CC5F09;
+    --teal:#1B6B74;
+    --muted:#6A7480;
+    --line:#E3DFD5;
+    --review-bg:#FBEFD7;
+    --review-fg:#8A5A06;
+    --usable-bg:#DFF0EF;
+    --usable-fg:#125159;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:15px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px;}
+
+  /* ---- header ---- */
+  header{
+    border-bottom:2px solid var(--ink);
+    background:
+      linear-gradient(var(--paper),var(--paper)) padding-box,
+      repeating-linear-gradient(45deg,rgba(22,34,43,.04) 0 10px,transparent 10px 20px);
+  }
+  .head-inner{display:flex;align-items:center;gap:14px;padding:22px 0 20px;}
+  .mark{flex:none;width:38px;height:38px;}
+  .brand h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:700;font-size:20px;letter-spacing:-.01em;margin:0;line-height:1;
+  }
+  .brand p{margin:3px 0 0;font-size:12.5px;color:var(--muted);letter-spacing:.02em;}
+  .brand p b{color:var(--amber-deep);font-weight:600;}
+
+  /* ---- search panel ---- */
+  main{padding:28px 0 64px;}
+  .panel{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 1px 0 rgba(22,34,43,.03),0 12px 28px -22px rgba(22,34,43,.35);
+  }
+  .panel-title{
+    font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:13px;
+    text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 16px;
+  }
+  .row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;}
+  .field{display:flex;flex-direction:column;gap:7px;}
+  .field.grow{flex:1 1 260px;}
+  label{font-size:12.5px;font-weight:600;letter-spacing:.01em;}
+  input[type=text],select{
+    font-family:"IBM Plex Sans",sans-serif;font-size:15px;color:var(--ink);
+    background:#FBFAF7;border:1.5px solid var(--line);border-radius:9px;
+    padding:11px 13px;width:100%;transition:border-color .15s,box-shadow .15s;
+  }
+  input[type=text]::placeholder{color:#A7AEB5;}
+  input[type=text]:focus,select:focus{
+    outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(240,122,27,.16);
+  }
+  select{cursor:pointer;min-width:130px;}
+
+  textarea{
+    font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--ink);line-height:1.5;
+    background:#FBFAF7;border:1.5px solid var(--line);border-radius:9px;
+    padding:11px 13px;width:100%;resize:vertical;min-height:54px;transition:border-color .15s,box-shadow .15s;
+  }
+  textarea::placeholder{color:#A7AEB5;}
+  textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(240,122,27,.16);}
+
+  .tabs{display:inline-flex;gap:4px;background:#F1EEE6;border-radius:10px;padding:4px;margin-bottom:18px;}
+  .tab{
+    font-family:"IBM Plex Sans",sans-serif;font-size:13.5px;font-weight:600;color:var(--muted);
+    background:transparent;border:none;border-radius:7px;padding:8px 16px;cursor:pointer;transition:all .14s;
+  }
+  .tab.active{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(22,34,43,.12);}
+  .tab:focus-visible{outline:3px solid rgba(240,122,27,.4);outline-offset:1px;}
+
+  .hidden{display:none !important;}
+
+  .trades{margin-top:20px;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:9px;}
+  .chip{position:relative;}
+  .chip input{position:absolute;opacity:0;inset:0;cursor:pointer;}
+  .chip span{
+    display:inline-block;padding:8px 14px;border-radius:999px;
+    border:1.5px solid var(--line);background:#FBFAF7;font-size:13.5px;font-weight:500;
+    cursor:pointer;transition:all .14s;user-select:none;
+  }
+  .chip input:checked + span{
+    background:var(--ink);color:#fff;border-color:var(--ink);
+  }
+  .chip input:focus-visible + span{box-shadow:0 0 0 3px rgba(240,122,27,.3);}
+
+  .go-row{margin-top:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  button.go{
+    font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:15px;letter-spacing:.01em;
+    color:#fff;background:var(--amber);border:none;border-radius:10px;
+    padding:13px 26px;cursor:pointer;transition:background .15s,transform .05s;
+  }
+  button.go:hover{background:var(--amber-deep);}
+  button.go:active{transform:translateY(1px);}
+  button.go:disabled{background:#D8C3AD;cursor:default;}
+  button.go:focus-visible{outline:3px solid rgba(240,122,27,.45);outline-offset:2px;}
+  .hint{font-size:12.5px;color:var(--muted);}
+
+  /* ---- status bar ---- */
+  .statusbar{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    flex-wrap:wrap;margin:30px 0 12px;min-height:34px;
+  }
+  .count{font-family:"IBM Plex Mono",monospace;font-size:13.5px;color:var(--ink);}
+  .count b{color:var(--amber-deep);}
+  .status-actions{display:flex;align-items:center;gap:16px;}
+  .toggle{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;}
+  .toggle input{accent-color:var(--teal);width:15px;height:15px;cursor:pointer;}
+  button.csv{
+    font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:13px;
+    color:var(--teal);background:transparent;border:1.5px solid var(--teal);
+    border-radius:8px;padding:8px 14px;cursor:pointer;transition:background .14s,color .14s;
+  }
+  button.csv:hover{background:var(--teal);color:#fff;}
+  button.csv:disabled{opacity:.4;cursor:default;}
+  button.csv:disabled:hover{background:transparent;color:var(--teal);}
+
+  /* ---- results ---- */
+  .panel.results{padding:0;overflow:hidden;}
+  table{width:100%;border-collapse:collapse;}
+  thead th{
+    text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;
+    color:var(--muted);font-weight:600;padding:14px 16px;border-bottom:1.5px solid var(--line);
+    background:#FBFAF7;position:sticky;top:0;
+  }
+  tbody td{padding:13px 16px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:middle;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:#FBF8F3;}
+  .biz{font-weight:600;}
+  .ph{font-family:"IBM Plex Mono",monospace;font-size:13px;}
+  .ph a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
+  .ph a:hover{border-color:var(--amber);}
+  td a.web{color:var(--teal);text-decoration:none;font-size:13px;}
+  td a.web:hover{text-decoration:underline;}
+  .tag{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+    padding:3px 8px;border-radius:5px;letter-spacing:.03em;
+  }
+  .tag.usable{background:var(--usable-bg);color:var(--usable-fg);}
+  .tag.review{background:var(--review-bg);color:var(--review-fg);}
+  .muted-cell{color:var(--muted);}
+
+  /* ---- states ---- */
+  .state{padding:54px 24px;text-align:center;}
+  .state h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:17px;margin:0 0 6px;}
+  .state p{margin:0;color:var(--muted);font-size:14px;max-width:440px;margin:0 auto;}
+  .spinner{
+    width:30px;height:30px;border:3px solid var(--line);border-top-color:var(--amber);
+    border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .coverage{
+    margin-top:22px;font-size:12.5px;color:var(--muted);line-height:1.6;
+    border-left:3px solid var(--amber);padding:2px 0 2px 14px;
+  }
+  .coverage b{color:var(--ink);font-weight:600;}
+
+  @media (prefers-reduced-motion:reduce){
+    .spinner{animation:none;}
+    *{transition:none !important;}
+  }
+  @media (max-width:620px){
+    .field.grow{flex:1 1 100%;}
+    thead{display:none;}
+    tbody td{display:block;padding:8px 16px;border:none;}
+    tbody tr{display:block;border-bottom:1.5px solid var(--line);padding:8px 0;}
+    tbody td::before{content:attr(data-label);display:block;font-size:11px;text-transform:uppercase;color:var(--muted);letter-spacing:.06em;margin-bottom:2px;}
+    .biz{font-size:15px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head-inner">
+    <svg class="mark" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+      <rect x="1" y="1" width="36" height="36" rx="9" fill="#16222B"/>
+      <path d="M19 9c-4 0-7.2 3.1-7.2 7 0 5 7.2 13 7.2 13s7.2-8 7.2-13c0-3.9-3.2-7-7.2-7z" fill="#F07A1B"/>
+      <circle cx="19" cy="16" r="2.6" fill="#16222B"/>
+    </svg>
+    <div class="brand">
+      <h1>Trade Lead Finder</h1>
+      <p>Pipeline Partners &nbsp;·&nbsp; free sourcing via <b>OpenStreetMap</b></p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel" aria-label="Search">
+    <p class="panel-title">Where to look</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tab-single" role="tab" aria-selected="true">Single area</button>
+      <button class="tab" id="tab-sweep" role="tab" aria-selected="false">Postcode sweep</button>
+    </div>
+
+    <div class="row" id="mode-single">
+      <div class="field grow">
+        <label for="loc">City, suburb or postcode</label>
+        <input id="loc" type="text" placeholder="e.g. Leppington, Newcastle, or 2530" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label for="radius">Search radius</label>
+        <select id="radius">
+          <option value="5">5 km</option>
+          <option value="10">10 km</option>
+          <option value="15" selected>15 km</option>
+          <option value="25">25 km</option>
+          <option value="50">50 km</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row hidden" id="mode-sweep">
+      <div class="field grow">
+        <label for="codes">Postcodes — separated by commas</label>
+        <textarea id="codes" rows="2" placeholder="2179, 2557, 2765, 2300, 2444"></textarea>
+      </div>
+      <div class="field">
+        <label for="radius2">Radius each</label>
+        <select id="radius2">
+          <option value="5">5 km</option>
+          <option value="10" selected>10 km</option>
+          <option value="15">15 km</option>
+          <option value="25">25 km</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="trades">
+      <label>Trades</label>
+      <div class="chips" id="chips">
+        <label class="chip"><input type="checkbox" value="roofer" checked /><span>Roofers</span></label>
+        <label class="chip"><input type="checkbox" value="electrician" checked /><span>Electricians</span></label>
+        <label class="chip"><input type="checkbox" value="plumber" checked /><span>Plumbers</span></label>
+        <label class="chip"><input type="checkbox" value="carpenter" /><span>Carpenters</span></label>
+        <label class="chip"><input type="checkbox" value="painter" /><span>Painters</span></label>
+        <label class="chip"><input type="checkbox" value="hvac" /><span>HVAC</span></label>
+      </div>
+    </div>
+
+    <div class="go-row">
+      <button class="go" id="search">Find leads</button>
+      <span class="hint" id="hint">Australian listings only. Tip: a postcode or single suburb gives the cleanest result.</span>
+    </div>
+  </section>
+
+  <div class="statusbar">
+    <div class="count" id="count" aria-live="polite"></div>
+    <div class="status-actions">
+      <label class="toggle"><input type="checkbox" id="onlyPhone" /> Callable only</label>
+      <button class="csv" id="csv" disabled>Download CSV</button>
+    </div>
+  </div>
+
+  <section class="panel results" aria-label="Results">
+    <div id="out">
+      <div class="state">
+        <h3>Pick a location and hit Find leads</h3>
+        <p>The finder pulls trade businesses that exist in OpenStreetMap for the area you choose, with whatever phone numbers are on record.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="coverage">
+    <b>Read this once.</b> OpenStreetMap is free and open-licensed, so this is yours to copy and call — but its trade coverage is thinner than Google's, and many listings have no phone. Records with a number are tagged <b>USABLE</b>; those without are tagged <b>REVIEW</b> (find the number before calling). Before any of these reach a dialler, wash the mobile numbers against the Do Not Call Register.
+  </p>
+</main>
+
+<script>
+const OVERPASS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter"
+];
+const NOMINATIM = "https://nominatim.openstreetmap.org/search";
+
+let rows = [];
+
+const $ = id => document.getElementById(id);
+const out = $("out");
+
+function selectedTrades(){
+  return [...document.querySelectorAll('#chips input:checked')].map(c => c.value);
+}
+
+function setState(html){ out.innerHTML = html; }
+
+function loading(){
+  setState('<div class="state"><div class="spinner"></div><h3>Searching OpenStreetMap…</h3><p>Locating the area, then pulling matching trade businesses.</p></div>');
+}
+
+function bboxFrom(lat, lon, km){
+  const dLat = km / 111.32;
+  const dLon = km / (111.32 * Math.cos(lat * Math.PI / 180));
+  return [lat - dLat, lon - dLon, lat + dLat, lon + dLon]; // S,W,N,E
+}
+
+async function geocode(q){
+  const url = `${NOMINATIM}?format=jsonv2&countrycodes=au&limit=1&q=${encodeURIComponent(q)}`;
+  const r = await fetch(url, {headers:{"Accept":"application/json"}});
+  if(!r.ok) throw new Error("geocode");
+  const data = await r.json();
+  if(!data.length) return null;
+  return {lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon), label: data[0].display_name};
+}
+
+function buildQuery(trades, bbox){
+  const [s,w,n,e] = bbox;
+  const filters = trades.map(t => `  nwr["craft"="${t}"](${s},${w},${n},${e});`).join("\n");
+  return `[out:json][timeout:60];\n(\n${filters}\n);\nout center tags;`;
+}
+
+async function overpass(query){
+  let lastErr;
+  for(const url of OVERPASS){
+    try{
+      const r = await fetch(url, {method:"POST", body:"data="+encodeURIComponent(query),
+        headers:{"Content-Type":"application/x-www-form-urlencoded"}});
+      if(r.ok) return (await r.json()).elements || [];
+      lastErr = "HTTP "+r.status;
+    }catch(err){ lastErr = err.message; }
+  }
+  throw new Error(lastErr || "overpass");
+}
+
+function pick(tags, ...keys){ for(const k of keys){ if(tags[k]) return tags[k]; } return ""; }
+
+function parse(elements){
+  const seen = new Set(), result = [];
+  for(const el of elements){
+    const t = el.tags || {};
+    const name = (t.name||"").trim();
+    if(!name) continue;
+    const suburb = pick(t,"addr:suburb","addr:city");
+    const key = (name+"|"+suburb).toLowerCase();
+    if(seen.has(key)) continue;
+    seen.add(key);
+    const phone = pick(t,"phone","contact:phone","contact:mobile","mobile");
+    const street = [pick(t,"addr:housenumber"), pick(t,"addr:street")].filter(Boolean).join(" ");
+    result.push({
+      trade: t.craft||"",
+      name,
+      phone,
+      website: pick(t,"website","contact:website"),
+      suburb,
+      address: [street, suburb, pick(t,"addr:postcode")].filter(Boolean).join(", "),
+      tier: phone ? "USABLE" : "REVIEW"
+    });
+  }
+  result.sort((a,b)=> (a.tier!=="USABLE") - (b.tier!=="USABLE") || a.trade.localeCompare(b.trade));
+  return result;
+}
+
+function esc(s){ return (s||"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function render(){
+  const onlyPhone = $("onlyPhone").checked;
+  const view = onlyPhone ? rows.filter(r=>r.phone) : rows;
+  const usable = rows.filter(r=>r.phone).length;
+
+  $("count").innerHTML = rows.length
+    ? `<b>${rows.length}</b> businesses &nbsp;·&nbsp; ${usable} callable &nbsp;·&nbsp; ${rows.length-usable} need a number`
+    : "";
+  $("csv").disabled = !rows.length;
+
+  if(!view.length){
+    setState('<div class="state"><h3>Nothing to show</h3><p>No matching businesses with the current filter. Try turning off “Callable only”, widening the radius, or a different suburb.</p></div>');
+    return;
+  }
+
+  const body = view.map(r=>`
+    <tr>
+      <td data-label="Trade" class="muted-cell">${esc(r.trade)}</td>
+      <td data-label="Business" class="biz">${esc(r.name)}</td>
+      <td data-label="Phone" class="ph">${r.phone ? `<a href="tel:${esc(r.phone).replace(/\s/g,'')}">${esc(r.phone)}</a>` : '<span class="muted-cell">—</span>'}</td>
+      <td data-label="Area" class="muted-cell">${esc(r.address)||'—'}</td>
+      <td data-label="Web">${r.website ? `<a class="web" href="${esc(r.website)}" target="_blank" rel="noopener">site ↗</a>` : '<span class="muted-cell">—</span>'}</td>
+      <td data-label="Status"><span class="tag ${r.phone?'usable':'review'}">${r.tier}</span></td>
+    </tr>`).join("");
+
+  setState(`<table><thead><tr>
+      <th>Trade</th><th>Business</th><th>Phone</th><th>Area</th><th>Web</th><th>Status</th>
+    </tr></thead><tbody>${body}</tbody></table>`);
+}
+
+function toCSV(){
+  const head = ["trade","business_name","phone","website","suburb","address","tier"];
+  const lines = [head.join(",")];
+  for(const r of rows){
+    lines.push([r.trade,r.name,r.phone,r.website,r.suburb,r.address,r.tier]
+      .map(v=>`"${(v||"").replace(/"/g,'""')}"`).join(","));
+  }
+  const blob = new Blob([lines.join("\n")], {type:"text/csv"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "trade-leads.csv";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+const MAX_CODES = 25;
+let mode = "single";
+
+function preflight(trades){
+  if(!trades.length){
+    setState('<div class="state"><h3>Pick at least one trade</h3><p>Select the trades you want to call.</p></div>');
+    return false;
+  }
+  $("search").disabled = true;
+  rows = [];
+  $("csv").disabled = true;
+  $("count").textContent = "";
+  return true;
+}
+
+async function runSingle(){
+  const q = $("loc").value.trim();
+  const trades = selectedTrades();
+  if(!q){ $("loc").focus(); return; }
+  if(!preflight(trades)) return;
+  loading();
+  try{
+    const place = await geocode(q);
+    if(!place){
+      setState('<div class="state"><h3>Couldn’t find that place</h3><p>No Australian match for that name. Try a postcode, or a nearby suburb spelled in full.</p></div>');
+      return;
+    }
+    const bbox = bboxFrom(place.lat, place.lon, parseFloat($("radius").value));
+    rows = parse(await overpass(buildQuery(trades, bbox)));
+    render();
+  }catch(err){
+    setState('<div class="state"><h3>The data service didn’t answer</h3><p>OpenStreetMap’s free endpoints rate-limit when busy. Wait a minute and try again — your selections are still set.</p></div>');
+  }finally{
+    $("search").disabled = false;
+  }
+}
+
+async function runSweep(){
+  const trades = selectedTrades();
+  const codes = [...new Set($("codes").value.split(",").map(c=>c.trim()).filter(Boolean))];
+  if(!codes.length){ $("codes").focus(); return; }
+  if(codes.length > MAX_CODES){
+    setState(`<div class="state"><h3>Too many postcodes</h3><p>Keep it to ${MAX_CODES} or fewer per sweep so the free endpoints don’t throttle you. Run the rest as a second batch.</p></div>`);
+    return;
+  }
+  if(!preflight(trades)) return;
+
+  const radius = parseFloat($("radius2").value);
+  let elements = [];
+  const skipped = [];
+
+  for(let i=0;i<codes.length;i++){
+    setState(`<div class="state"><div class="spinner"></div><h3>Sweeping postcode ${i+1} of ${codes.length}</h3><p>${esc(codes[i])} &nbsp;·&nbsp; ${elements.length} raw matches so far</p></div>`);
+    try{
+      const place = await geocode(codes[i]);
+      if(!place){ skipped.push(codes[i]); continue; }
+      await sleep(1100); // be kind to the free geocoder (1 req/sec policy)
+      const bbox = bboxFrom(place.lat, place.lon, radius);
+      const els = await overpass(buildQuery(trades, bbox));
+      elements = elements.concat(els);
+      await sleep(700);
+    }catch(err){
+      skipped.push(codes[i]);
+      await sleep(1500);
+    }
+  }
+
+  rows = parse(elements); // single global de-dupe across all postcodes
+  render();
+
+  if(skipped.length && rows.length){
+    $("count").innerHTML += ` &nbsp;·&nbsp; <span style="color:var(--review-fg)">skipped: ${esc(skipped.join(", "))}</span>`;
+  } else if(skipped.length && !rows.length){
+    setState(`<div class="state"><h3>No results</h3><p>None of those postcodes returned matches${skipped.length?` (couldn’t place: ${esc(skipped.join(", "))})`:""}. Try widening the radius or checking the codes.</p></div>`);
+  }
+  $("search").disabled = false;
+}
+
+function run(){ return mode === "single" ? runSingle() : runSweep(); }
+
+function setMode(m){
+  mode = m;
+  const single = m === "single";
+  $("tab-single").classList.toggle("active", single);
+  $("tab-sweep").classList.toggle("active", !single);
+  $("tab-single").setAttribute("aria-selected", single);
+  $("tab-sweep").setAttribute("aria-selected", !single);
+  $("mode-single").classList.toggle("hidden", !single);
+  $("mode-sweep").classList.toggle("hidden", single);
+  $("hint").textContent = single
+    ? "Australian listings only. Tip: a postcode or single suburb gives the cleanest result."
+    : `Paste up to ${MAX_CODES} postcodes. It searches each, then merges and de-duplicates into one list.`;
+}
+
+$("tab-single").addEventListener("click", ()=>setMode("single"));
+$("tab-sweep").addEventListener("click", ()=>setMode("sweep"));
+$("search").addEventListener("click", run);
+$("loc").addEventListener("keydown", e=>{ if(e.key==="Enter") run(); });
+$("onlyPhone").addEventListener("change", render);
+$("csv").addEventListener("click", toCSV);
+</script>
+</body>
+</html>
