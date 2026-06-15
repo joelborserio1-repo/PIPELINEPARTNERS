@@ -206,7 +206,7 @@
     </svg>
     <div class="brand">
       <h1>Trade Lead Finder</h1>
-      <p>Pipeline Partners &nbsp;·&nbsp; free sourcing via <b>OpenStreetMap</b></p>
+      <p>Pipeline Partners &nbsp;·&nbsp; live sourcing via <b>Google Maps</b></p>
     </div>
   </div>
 </header>
@@ -283,23 +283,17 @@
     <div id="out">
       <div class="state">
         <h3>Pick a location and hit Find leads</h3>
-        <p>The finder pulls trade businesses that exist in OpenStreetMap for the area you choose, with whatever phone numbers are on record.</p>
+        <p>The finder pulls trade businesses from Google Maps for the area you choose, with whatever phone numbers are on record.</p>
       </div>
     </div>
   </section>
 
   <p class="coverage">
-    <b>Read this once.</b> OpenStreetMap is free and open-licensed, so this is yours to copy and call — but its trade coverage is thinner than Google's, and many listings have no phone. Records with a number are tagged <b>USABLE</b>; those without are tagged <b>REVIEW</b> (find the number before calling). Before any of these reach a dialler, wash the mobile numbers against the Do Not Call Register.
+    <b>Read this once.</b> Listings come from Google Maps business data. Most carry a phone number — those are tagged <b>USABLE</b>; the occasional one without is tagged <b>REVIEW</b> (find the number before calling). Before any of these reach a dialler, wash the mobile numbers against the Do Not Call Register.
   </p>
 </main>
 
 <script>
-const OVERPASS = [
-  "https://overpass-api.de/api/interpreter",
-  "https://overpass.kumi.systems/api/interpreter"
-];
-const NOMINATIM = "https://nominatim.openstreetmap.org/search";
-
 let rows = [];
 
 const $ = id => document.getElementById(id);
@@ -311,70 +305,20 @@ function selectedTrades(){
 
 function setState(html){ out.innerHTML = html; }
 
-function loading(){
-  setState('<div class="state"><div class="spinner"></div><h3>Searching OpenStreetMap…</h3><p>Locating the area, then pulling matching trade businesses.</p></div>');
+function loading(msg){
+  setState(`<div class="state"><div class="spinner"></div><h3>${msg || "Searching Google Maps…"}</h3><p>Pulling matching trade businesses. This can take up to a minute.</p></div>`);
 }
 
-function bboxFrom(lat, lon, km){
-  const dLat = km / 111.32;
-  const dLon = km / (111.32 * Math.cos(lat * Math.PI / 180));
-  return [lat - dLat, lon - dLon, lat + dLat, lon + dLon]; // S,W,N,E
-}
-
-async function geocode(q){
-  const url = `${NOMINATIM}?format=jsonv2&countrycodes=au&limit=1&q=${encodeURIComponent(q)}`;
-  const r = await fetch(url, {headers:{"Accept":"application/json"}});
-  if(!r.ok) throw new Error("geocode");
-  const data = await r.json();
-  if(!data.length) return null;
-  return {lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon), label: data[0].display_name};
-}
-
-function buildQuery(trades, bbox){
-  const [s,w,n,e] = bbox;
-  const filters = trades.map(t => `  nwr["craft"="${t}"](${s},${w},${n},${e});`).join("\n");
-  return `[out:json][timeout:60];\n(\n${filters}\n);\nout center tags;`;
-}
-
-async function overpass(query){
-  let lastErr;
-  for(const url of OVERPASS){
-    try{
-      const r = await fetch(url, {method:"POST", body:"data="+encodeURIComponent(query),
-        headers:{"Content-Type":"application/x-www-form-urlencoded"}});
-      if(r.ok) return (await r.json()).elements || [];
-      lastErr = "HTTP "+r.status;
-    }catch(err){ lastErr = err.message; }
-  }
-  throw new Error(lastErr || "overpass");
-}
-
-function pick(tags, ...keys){ for(const k of keys){ if(tags[k]) return tags[k]; } return ""; }
-
-function parse(elements){
-  const seen = new Set(), result = [];
-  for(const el of elements){
-    const t = el.tags || {};
-    const name = (t.name||"").trim();
-    if(!name) continue;
-    const suburb = pick(t,"addr:suburb","addr:city");
-    const key = (name+"|"+suburb).toLowerCase();
-    if(seen.has(key)) continue;
-    seen.add(key);
-    const phone = pick(t,"phone","contact:phone","contact:mobile","mobile");
-    const street = [pick(t,"addr:housenumber"), pick(t,"addr:street")].filter(Boolean).join(" ");
-    result.push({
-      trade: t.craft||"",
-      name,
-      phone,
-      website: pick(t,"website","contact:website"),
-      suburb,
-      address: [street, suburb, pick(t,"addr:postcode")].filter(Boolean).join(", "),
-      tier: phone ? "USABLE" : "REVIEW"
-    });
-  }
-  result.sort((a,b)=> (a.tier!=="USABLE") - (b.tier!=="USABLE") || a.trade.localeCompare(b.trade));
-  return result;
+async function fetchLeads(payload){
+  const r = await fetch("/api/leads", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify(payload)
+  });
+  let data = {};
+  try{ data = await r.json(); }catch(e){}
+  if(!r.ok) throw new Error(data.error || ("HTTP "+r.status));
+  return data.rows || [];
 }
 
 function esc(s){ return (s||"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
@@ -424,7 +368,6 @@ function toCSV(){
   URL.revokeObjectURL(a.href);
 }
 
-const sleep = ms => new Promise(r=>setTimeout(r,ms));
 const MAX_CODES = 25;
 let mode = "single";
 
@@ -440,6 +383,10 @@ function preflight(trades){
   return true;
 }
 
+function errState(err){
+  return `<div class="state"><h3>The data service didn’t answer</h3><p>${esc(err && err.message) || "Wait a moment and try again — your selections are still set."}</p></div>`;
+}
+
 async function runSingle(){
   const q = $("loc").value.trim();
   const trades = selectedTrades();
@@ -447,16 +394,10 @@ async function runSingle(){
   if(!preflight(trades)) return;
   loading();
   try{
-    const place = await geocode(q);
-    if(!place){
-      setState('<div class="state"><h3>Couldn’t find that place</h3><p>No Australian match for that name. Try a postcode, or a nearby suburb spelled in full.</p></div>');
-      return;
-    }
-    const bbox = bboxFrom(place.lat, place.lon, parseFloat($("radius").value));
-    rows = parse(await overpass(buildQuery(trades, bbox)));
+    rows = await fetchLeads({ location: q, trades });
     render();
   }catch(err){
-    setState('<div class="state"><h3>The data service didn’t answer</h3><p>OpenStreetMap’s free endpoints rate-limit when busy. Wait a minute and try again — your selections are still set.</p></div>');
+    setState(errState(err));
   }finally{
     $("search").disabled = false;
   }
@@ -467,40 +408,19 @@ async function runSweep(){
   const codes = [...new Set($("codes").value.split(",").map(c=>c.trim()).filter(Boolean))];
   if(!codes.length){ $("codes").focus(); return; }
   if(codes.length > MAX_CODES){
-    setState(`<div class="state"><h3>Too many postcodes</h3><p>Keep it to ${MAX_CODES} or fewer per sweep so the free endpoints don’t throttle you. Run the rest as a second batch.</p></div>`);
+    setState(`<div class="state"><h3>Too many postcodes</h3><p>Keep it to ${MAX_CODES} or fewer per sweep. Run the rest as a second batch.</p></div>`);
     return;
   }
   if(!preflight(trades)) return;
-
-  const radius = parseFloat($("radius2").value);
-  let elements = [];
-  const skipped = [];
-
-  for(let i=0;i<codes.length;i++){
-    setState(`<div class="state"><div class="spinner"></div><h3>Sweeping postcode ${i+1} of ${codes.length}</h3><p>${esc(codes[i])} &nbsp;·&nbsp; ${elements.length} raw matches so far</p></div>`);
-    try{
-      const place = await geocode(codes[i]);
-      if(!place){ skipped.push(codes[i]); continue; }
-      await sleep(1100); // be kind to the free geocoder (1 req/sec policy)
-      const bbox = bboxFrom(place.lat, place.lon, radius);
-      const els = await overpass(buildQuery(trades, bbox));
-      elements = elements.concat(els);
-      await sleep(700);
-    }catch(err){
-      skipped.push(codes[i]);
-      await sleep(1500);
-    }
+  loading(`Sweeping ${codes.length} postcode${codes.length>1?"s":""}…`);
+  try{
+    rows = await fetchLeads({ areas: codes, trades });
+    render();
+  }catch(err){
+    setState(errState(err));
+  }finally{
+    $("search").disabled = false;
   }
-
-  rows = parse(elements); // single global de-dupe across all postcodes
-  render();
-
-  if(skipped.length && rows.length){
-    $("count").innerHTML += ` &nbsp;·&nbsp; <span style="color:var(--review-fg)">skipped: ${esc(skipped.join(", "))}</span>`;
-  } else if(skipped.length && !rows.length){
-    setState(`<div class="state"><h3>No results</h3><p>None of those postcodes returned matches${skipped.length?` (couldn’t place: ${esc(skipped.join(", "))})`:""}. Try widening the radius or checking the codes.</p></div>`);
-  }
-  $("search").disabled = false;
 }
 
 function run(){ return mode === "single" ? runSingle() : runSweep(); }
