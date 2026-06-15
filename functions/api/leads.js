@@ -1,7 +1,5 @@
-// Cloudflare Worker for pipelinepartners.com.au
-// Serves the static site (via the ASSETS binding) and exposes a single
-// server-side endpoint, POST /api/leads, which proxies Outscraper's Google
-// Maps search so the API key stays out of the browser.
+// Cloudflare Pages Function — POST /api/leads
+// Proxies Outscraper's Google Maps search so the API key stays server-side.
 
 const TRADE_QUERIES = {
   roofer: "roofer",
@@ -12,31 +10,21 @@ const TRADE_QUERIES = {
   hvac: "air conditioning and heating",
 };
 
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    if (url.pathname === "/api/leads") {
-      if (request.method !== "POST") return json({ error: "Use POST." }, 405);
-      return handleLeads(request, env);
-    }
-    return env.ASSETS.fetch(request);
-  },
-};
-
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), {
+const json = (obj, status = 200) =>
+  new Response(JSON.stringify(obj), {
     status,
     headers: { "content-type": "application/json; charset=utf-8" },
   });
-}
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function handleLeads(request, env) {
+export async function onRequestPost(context) {
+  const { request, env } = context;
+
   const key = env.OUTSCRAPER_API_KEY;
   if (!key) {
     return json(
-      { error: "Lead service isn't configured yet. Add the OUTSCRAPER_API_KEY secret to the Worker." },
+      { error: "Lead service isn't configured yet. Add the OUTSCRAPER_API_KEY secret to the project." },
       500
     );
   }
@@ -83,7 +71,10 @@ async function handleLeads(request, env) {
       key
     );
   } catch (err) {
-    return json({ error: "The data service didn't answer. Try again in a moment.", detail: String(err) }, 502);
+    return json(
+      { error: "The data service didn't answer. Try again in a moment.", detail: String(err) },
+      502
+    );
   }
 
   const groups = Array.isArray(data && data.data) ? data.data : [];
@@ -120,7 +111,7 @@ async function handleLeads(request, env) {
 }
 
 // Outscraper answers synchronously for small jobs; larger ones come back as a
-// pending request we poll. Cap polling so we stay well under the edge timeout.
+// pending request we poll. Cap polling so we stay under the platform timeout.
 async function outscraper(url, key) {
   const headers = { "X-API-KEY": key };
   let r = await fetch(url, { headers });
