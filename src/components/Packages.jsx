@@ -28,8 +28,8 @@ export default function Packages() {
                 transition={{ type: "spring", stiffness: 220, damping: 22 }}
                 className={`relative flex h-full flex-col rounded-2xl border p-8 ${
                   p.popular
-                    ? "border-accent bg-gradient-to-b from-surface2 to-ink2 shadow-card"
-                    : "border-line bg-gradient-to-b from-surface to-ink2"
+                    ? "border-accent bg-white shadow-card ring-1 ring-accent/30"
+                    : "border-line bg-white shadow-[0_16px_46px_-28px_rgba(0,0,0,0.3)]"
                 }`}
               >
                 {p.popular && (

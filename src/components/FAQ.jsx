@@ -39,7 +39,7 @@ function Item({ q, a, open, onToggle, id }) {
 export default function FAQ() {
   const [open, setOpen] = useState(0);
   return (
-    <section id="faq" className="bg-ink2 py-24 md:py-32">
+    <section id="faq" className="bg-paper2 py-24 md:py-32">
       <div className="wrap grid gap-10 md:grid-cols-[0.7fr_1.3fr]">
         <Reveal>
           <span className="eyebrow">Questions</span>

@@ -3,7 +3,7 @@ import { steps } from "../data/site.js";
 
 export default function HowItWorks() {
   return (
-    <section id="how" className="relative bg-cream py-24 text-ink2 md:py-32">
+    <section id="how" className="relative bg-paper2 py-24 text-ink md:py-32">
       <div className="wrap">
         <Reveal>
           <span className="eyebrow" style={{ color: "#e2540a" }}>How it works</span>

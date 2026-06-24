@@ -24,7 +24,7 @@ export default function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "border-b border-line bg-ink/70 backdrop-blur-xl" : "border-b border-transparent"
+        scrolled ? "border-b border-line bg-paper/80 backdrop-blur-xl" : "border-b border-transparent"
       }`}
     >
       <div className="wrap flex h-[72px] items-center justify-between">
@@ -56,7 +56,7 @@ export default function Nav() {
       </div>
 
       {open && (
-        <div className="border-b border-line bg-ink/95 px-6 pb-7 pt-2 backdrop-blur-xl md:hidden">
+        <div className="border-b border-line bg-paper/95 px-6 pb-7 pt-2 backdrop-blur-xl md:hidden">
           <div className="flex flex-col">
             {nav.map((n) => (
               <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="border-b border-line py-3.5 text-[1.05rem] text-cream">

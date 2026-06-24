@@ -41,7 +41,7 @@ export default function Hero() {
         <div className="h-full w-full rounded-full bg-[radial-gradient(circle_at_center,rgba(255,106,26,0.28),rgba(255,106,26,0.06)_40%,transparent_66%)] blur-[6px] animate-floatglow" />
       </motion.div>
       {/* grid wash */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 opacity-[0.5] [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_80%_55%_at_50%_30%,#000,transparent_78%)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 opacity-[0.6] [background-image:linear-gradient(rgba(10,11,14,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(10,11,14,0.05)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_80%_55%_at_50%_30%,#000,transparent_78%)]" />
 
       <div className="wrap relative pb-20 pt-10 md:pb-28 md:pt-16">
         <div className="max-w-3xl">
@@ -73,7 +73,7 @@ export default function Hero() {
         {/* honest stat band */}
         <motion.div {...rise(0.4)} className="mt-16 grid max-w-3xl grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
           {stats.map((s) => (
-            <div key={s.label} className="bg-ink2 px-6 py-6">
+            <div key={s.label} className="bg-paper2 px-6 py-6">
               <div className="font-display text-[2.1rem] font-semibold text-accent">
                 <Counter to={s.value} prefix={s.prefix || ""} suffix={s.suffix || ""} />
               </div>

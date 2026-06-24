@@ -11,10 +11,10 @@ function Check() {
 
 export default function Guarantee() {
   return (
-    <section id="guarantee" className="bg-ink2 py-24 md:py-32">
+    <section id="guarantee" className="bg-paper2 py-24 md:py-32">
       <div className="wrap">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-line2 bg-gradient-to-br from-surface2 to-ink p-10 md:p-16">
+          <div className="relative overflow-hidden rounded-3xl border border-line bg-white p-10 shadow-card md:p-16">
             <div aria-hidden="true" className="absolute -right-24 -top-44 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(255,106,26,0.42),transparent_65%)] blur-[44px] opacity-60" />
             <div className="relative grid items-center gap-10 md:grid-cols-2">
               <div>

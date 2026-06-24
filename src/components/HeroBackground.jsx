@@ -50,7 +50,7 @@ export default function HeroBackground() {
 
     function drawLanes() {
       ctx.lineWidth = 1;
-      ctx.strokeStyle = "rgba(255,255,255,0.05)";
+      ctx.strokeStyle = "rgba(10,11,14,0.06)";
       for (const lane of lanes) {
         ctx.beginPath();
         for (let x = -20; x <= w + 20; x += 14) {

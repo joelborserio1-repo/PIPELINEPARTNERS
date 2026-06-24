@@ -6,7 +6,7 @@
   :root { color-scheme: dark; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
-    @apply bg-ink text-cream font-body antialiased;
+    @apply bg-paper text-ink font-body antialiased;
     overflow-x: hidden;
   }
   h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.04; }
@@ -15,7 +15,7 @@
   body::after {
     content: "";
     position: fixed; inset: 0; z-index: 9998; pointer-events: none;
-    opacity: 0.035; mix-blend-mode: overlay;
+    opacity: 0.02; mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
@@ -33,9 +33,9 @@
     @apply bg-accent text-white shadow-glow hover:-translate-y-0.5 hover:brightness-110;
   }
   .btn-ghost {
-    @apply border border-line2 text-cream hover:border-muted hover:bg-white/5;
+    @apply border border-line2 text-ink hover:border-ink/40 hover:bg-black/[0.04];
   }
-  .card { @apply rounded-2xl border border-line bg-gradient-to-b from-surface to-ink2; }
+  .card { @apply rounded-2xl border border-line bg-white shadow-[0_16px_46px_-28px_rgba(0,0,0,0.3)]; }
 }
 
 /* Respect reduced motion for any CSS transitions/animations */

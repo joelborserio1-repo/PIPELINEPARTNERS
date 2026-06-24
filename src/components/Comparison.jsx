@@ -20,7 +20,7 @@ function Cross() {
 export default function Comparison() {
   const reduce = useReducedMotion();
   return (
-    <section id="compare" className="bg-cream py-24 text-ink2 md:py-32">
+    <section id="compare" className="bg-paper2 py-24 text-ink md:py-32">
       <div className="wrap">
         <Reveal>
           <span className="eyebrow" style={{ color: "#e2540a" }}>Exclusive vs shared</span>

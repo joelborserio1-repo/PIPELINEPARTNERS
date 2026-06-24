@@ -63,7 +63,7 @@ export default function Contact() {
 
         <Reveal delay={0.1}>
           {/* ================= GOHIGHLEVEL FORM ================= */}
-          <div className="mx-auto mt-12 w-full max-w-[880px] rounded-3xl border border-line2 bg-surface p-3 shadow-card sm:p-4">
+          <div className="mx-auto mt-12 w-full max-w-[880px] rounded-3xl border border-line bg-paper2 p-3 shadow-card sm:p-4">
             <iframe
               src={`https://api.leadconnectorhq.com/widget/form/${brand.ghlFormId}`}
               title="Pipeline Partners enquiry"
