@@ -9,6 +9,7 @@ export default function HeroBackground() {
     const canvas = ref.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
