@@ -5,3 +5,7 @@ Thumbs.db
 .vscode/
 .idea/
 node_modules/
+
+# build output (Cloudflare Pages builds this)
+dist/
+.vite/
