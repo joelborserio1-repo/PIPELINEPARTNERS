@@ -4,7 +4,7 @@ function Mark() {
   return (
     <svg viewBox="0 0 32 32" className="h-7 w-7" aria-hidden="true">
       <path d="M5 23 C 11 23, 12 10, 20 10" stroke="rgba(244,242,237,.55)" strokeWidth="3" fill="none" strokeLinecap="round" />
-      <circle cx="23" cy="10" r="4.6" fill="#FF6A1A" />
+      <circle cx="23" cy="10" r="4.6" fill="#1E40AF" />
     </svg>
   );
 }

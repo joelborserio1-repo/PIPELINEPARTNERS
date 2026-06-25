@@ -79,7 +79,7 @@ export const steps = [
   {
     label: "You",
     title: "You answer and close",
-    body: "You pick up the phone and do the work. We optimise and report, and keep the flow steady month after month.",
+    body: "The easy part. You pick up the phone and book the job. We handle the marketing, the tracking and the reporting, and keep the leads coming month after month.",
   },
 ];
 

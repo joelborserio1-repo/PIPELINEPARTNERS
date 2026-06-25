@@ -15,7 +15,7 @@ export default function Guarantee() {
       <div className="wrap">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl border border-line bg-white p-10 shadow-card md:p-16">
-            <div aria-hidden="true" className="absolute -right-24 -top-44 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(255,106,26,0.42),transparent_65%)] blur-[44px] opacity-60" />
+            <div aria-hidden="true" className="absolute -right-24 -top-44 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(30,64,175,0.42),transparent_65%)] blur-[44px] opacity-60" />
             <div className="relative grid items-center gap-10 md:grid-cols-2">
               <div>
                 <span className="eyebrow">The guarantee</span>

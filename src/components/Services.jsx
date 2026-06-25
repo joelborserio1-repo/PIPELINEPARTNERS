@@ -29,7 +29,7 @@ export default function Services() {
               transition={{ type: "spring", stiffness: 220, damping: 22 }}
               className="card relative h-full overflow-hidden p-8 md:p-10"
             >
-              <div className="absolute right-0 top-0 h-44 w-44 -translate-y-1/3 translate-x-1/3 rounded-full bg-[radial-gradient(circle,rgba(255,106,26,0.16),transparent_60%)] blur-2xl" />
+              <div className="absolute right-0 top-0 h-44 w-44 -translate-y-1/3 translate-x-1/3 rounded-full bg-[radial-gradient(circle,rgba(30,64,175,0.16),transparent_60%)] blur-2xl" />
               <div className="flex items-center gap-4">
                 <span className="grid h-14 w-14 place-items-center rounded-2xl bg-accent text-white shadow-glow">
                   <LeadIcon className="h-7 w-7" />

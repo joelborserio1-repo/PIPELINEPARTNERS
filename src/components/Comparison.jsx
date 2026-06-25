@@ -23,7 +23,7 @@ export default function Comparison() {
     <section id="compare" className="bg-paper2 py-24 text-ink md:py-32">
       <div className="wrap">
         <Reveal>
-          <span className="eyebrow" style={{ color: "#e2540a" }}>Exclusive vs shared</span>
+          <span className="eyebrow" style={{ color: "#1E3A8A" }}>Exclusive vs shared</span>
           <h2 className="mt-4 max-w-[20ch] text-[clamp(1.8rem,4vw,2.9rem)] font-bold">
             Most agencies sell the same lead to four of your rivals. We sell it once. To you.
           </h2>

@@ -25,7 +25,7 @@ export default function Hero() {
       {/* soft, airy background */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(55%_45%_at_88%_8%,rgba(255,106,26,0.12),transparent_60%),radial-gradient(45%_40%_at_6%_18%,rgba(40,90,255,0.05),transparent_60%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(55%_45%_at_88%_8%,rgba(30,64,175,0.12),transparent_60%),radial-gradient(45%_40%_at_6%_18%,rgba(40,90,255,0.05),transparent_60%)]"
       />
 
       <div className="wrap relative pb-20 pt-10 md:pb-28 md:pt-14">
@@ -43,7 +43,7 @@ export default function Hero() {
             <motion.ul {...rise(0.22)} className="mt-6 flex flex-col gap-2.5">
               {heroBullets.map((b) => (
                 <li key={b.strong} className="flex items-start gap-3 text-[1.0rem]">
-                  <span className="mt-2 h-2 w-2 flex-none rounded-full bg-accent shadow-[0_0_0_4px_rgba(255,106,26,0.15)]" />
+                  <span className="mt-2 h-2 w-2 flex-none rounded-full bg-accent shadow-[0_0_0_4px_rgba(30,64,175,0.15)]" />
                   <span className="text-muted"><b className="text-ink">{b.strong}</b> {b.rest}</span>
                 </li>
               ))}
