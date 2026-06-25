@@ -6,8 +6,8 @@ export default {
       colors: {
         ink: "#0a0a0b",
         ink2: "#141417",
-        paper: "#ffffff",
-        paper2: "#f6f5f2",
+        paper: "#f1eee7",
+        paper2: "#faf9f5",
         surface: "#ffffff",
         surface2: "#faf9f7",
         line: "rgba(10,11,14,0.10)",

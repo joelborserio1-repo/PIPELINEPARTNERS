@@ -11,6 +11,8 @@
   }
   h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.04; }
   ::selection { background: theme("colors.accent"); color: #fff; }
+  /* hairline divider between stacked sections so each reads as its own block */
+  main > section + section { @apply border-t border-line; }
   /* subtle film grain for depth */
   body::after {
     content: "";
