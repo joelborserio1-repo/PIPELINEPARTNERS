@@ -16,8 +16,14 @@ export const nav = [
   { label: "Pricing", href: "#pricing" },
   { label: "Results", href: "#results" },
   { label: "Guarantee", href: "#guarantee" },
-  { label: "About", href: "#about" },
+  { label: "Team", href: "#team" },
   { label: "FAQ", href: "#faq" },
+];
+
+// Meet the team. Add photos and fuller bios when ready.
+export const team = [
+  { name: "Brendan", role: "Co-founder", blurb: "Builds and runs the campaigns that keep your pipeline full." },
+  { name: "Joel", role: "Co-founder", blurb: "Makes sure every lead is exclusive and every promise is kept." },
 ];
 
 export const heroBullets = [

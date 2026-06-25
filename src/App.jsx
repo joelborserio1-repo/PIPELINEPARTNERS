@@ -7,6 +7,7 @@ import Guarantee from "./components/Guarantee.jsx";
 import Results from "./components/Results.jsx";
 import Comparison from "./components/Comparison.jsx";
 import About from "./components/About.jsx";
+import Team from "./components/Team.jsx";
 import FAQ from "./components/FAQ.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
@@ -24,6 +25,7 @@ export default function App() {
         <Results />
         <Comparison />
         <About />
+        <Team />
         <FAQ />
         <Contact />
       </main>
