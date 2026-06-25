@@ -25,8 +25,9 @@ export default {
       },
       maxWidth: { wrap: "1200px" },
       boxShadow: {
-        glow: "0 18px 60px -20px rgba(255,106,26,0.45)",
-        card: "0 30px 70px -40px rgba(0,0,0,0.8)",
+        glow: "0 18px 50px -16px rgba(255,106,26,0.5)",
+        card: "0 18px 50px -24px rgba(10,11,14,0.18)",
+        soft: "0 2px 8px rgba(10,11,14,0.04), 0 16px 40px -22px rgba(10,11,14,0.18)",
       },
       keyframes: {
         floatglow: {
