@@ -149,6 +149,56 @@ export const packages = [
 export const packagesTerms =
   "Management fee billed monthly. Advertising spend is billed at cost alongside your fee, never marked up, with full reporting so you always see where it goes. No setup fee. A 90 day initial term, then month to month, cancel any time. Backed by the guarantee: if we miss the agreed number, you do not pay.";
 
+// SEO packages. Simple monthly fee, no ad spend.
+export const packagesSeo = [
+  {
+    name: "Essentials",
+    tagline: "Get found locally.",
+    price: 499,
+    popular: false,
+    includes: [
+      "Google Business Profile optimisation and management",
+      "Local SEO setup (NAP consistency, citations, local listings)",
+      "On-page optimisation for up to 5 key pages",
+      "2 target keywords tracked",
+      "Monthly performance report",
+    ],
+  },
+  {
+    name: "Growth",
+    tagline: "Climb the rankings.",
+    price: 899,
+    popular: true,
+    includes: [
+      "Everything in Essentials",
+      "On-page optimisation across the full site",
+      "Up to 10 target keywords tracked",
+      "2 SEO content pieces or blog posts per month",
+      "Backlink building (quality local and industry links)",
+      "Technical SEO fixes",
+      "Twice monthly reporting",
+    ],
+  },
+  {
+    name: "Authority",
+    tagline: "Own your market.",
+    price: 1499,
+    popular: false,
+    includes: [
+      "Everything in Growth",
+      "Up to 25 keywords tracked",
+      "4 content pieces per month",
+      "Ongoing link building campaign",
+      "Competitor analysis and strategy",
+      "Conversion rate optimisation on key pages",
+      "Monthly strategy call",
+    ],
+  },
+];
+
+export const packagesSeoTerms =
+  "Billed monthly. Tell us your market and what you want to rank for, and we will recommend the right tier.";
+
 // PLACEHOLDER TESTIMONIALS. Swap for real verified reviews before relying on these publicly.
 export const testimonials = [
   { quote: "We went from chasing quotes on shared lead sites to having our own steady flow of jobs. Every lead is ours, no one else is calling them. Booked solid three months ahead now.", name: "Dave M.", role: "Roofing, Newcastle" },

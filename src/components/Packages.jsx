@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "./Reveal.jsx";
-import { packages, packagesTerms } from "../data/site.js";
+import { packages, packagesTerms, packagesSeo, packagesSeoTerms } from "../data/site.js";
 
 const tabs = [
   { key: "leads", label: "Leads" },
@@ -33,20 +33,32 @@ function PlanGrid({ plans, terms }) {
             <h3 className="text-[1.6rem]">{p.name}</h3>
             <p className="mt-1 font-body font-medium text-accent2">{p.tagline}</p>
 
-            <div className="mt-6 flex items-end gap-1">
-              <span className="font-display text-[0.95rem] text-muted">$</span>
-              <span className="font-display text-[3.2rem] leading-none">{fmt(p.fee)}</span>
-            </div>
-            <p className="font-body text-[0.9rem] text-muted">per month, management fee</p>
-
-            <div className="mt-5 space-y-2 border-y border-line py-4 font-body text-[0.92rem]">
-              <div className="flex items-center justify-between text-muted">
-                <span>Ad spend, at cost</span><span className="font-semibold text-ink">${fmt(p.adSpend)}/mo</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="font-semibold">All in total</span><span className="font-display text-[1.3rem] text-accent">${fmt(p.allIn)}/mo</span>
-              </div>
-            </div>
+            {p.adSpend != null ? (
+              <>
+                <div className="mt-6 flex items-end gap-1">
+                  <span className="font-display text-[0.95rem] text-muted">$</span>
+                  <span className="font-display text-[3.2rem] leading-none">{fmt(p.fee)}</span>
+                </div>
+                <p className="font-body text-[0.9rem] text-muted">per month, management fee</p>
+                <div className="mt-5 space-y-2 border-y border-line py-4 font-body text-[0.92rem]">
+                  <div className="flex items-center justify-between text-muted">
+                    <span>Ad spend, at cost</span><span className="font-semibold text-ink">${fmt(p.adSpend)}/mo</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold">All in total</span><span className="font-display text-[1.3rem] text-accent">${fmt(p.allIn)}/mo</span>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="mt-6 flex items-end gap-1">
+                  <span className="font-display text-[0.95rem] text-muted">$</span>
+                  <span className="font-display text-[3.2rem] leading-none">{fmt(p.price)}</span>
+                  <span className="mb-1.5 font-body text-[0.9rem] text-muted">/mo</span>
+                </div>
+                <div className="mt-5 border-t border-line pt-5" />
+              </>
+            )}
 
             <ul className="mt-6 flex flex-1 flex-col gap-3 font-body text-[0.95rem]">
               {p.includes.map((inc) => (
@@ -121,12 +133,7 @@ export default function Packages() {
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
               {active === "leads" && <PlanGrid plans={packages} terms={packagesTerms} />}
-              {active === "seo" && (
-                <ComingSoon
-                  title="SEO packages are on the way"
-                  body="Tell us your market and what you want to rank for, and we will put together a plan and a price. No obligation."
-                />
-              )}
+              {active === "seo" && <PlanGrid plans={packagesSeo} terms={packagesSeoTerms} />}
               {active === "webdev" && (
                 <ComingSoon
                   title="Website packages are on the way"
