@@ -49,12 +49,6 @@ export default function Results() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={0.1}>
-          <p className="mt-6 text-[0.82rem] text-faint">
-            Placeholder reviews shown while we collect verified, named testimonials. Real results replace these before launch.
-          </p>
-        </Reveal>
       </div>
     </section>
   );
