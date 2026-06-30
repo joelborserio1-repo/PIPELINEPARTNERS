@@ -39,7 +39,7 @@ export default function Nav() {
             <a
               key={n.href}
               href={n.href}
-              className={`text-[0.95rem] font-medium transition-colors ${light ? "text-muted hover:text-ink" : "text-white/75 hover:text-white"}`}
+              className={`font-display text-[0.92rem] uppercase tracking-wide transition-colors ${light ? "text-muted hover:text-ink" : "text-white/75 hover:text-white"}`}
             >
               {n.label}
             </a>
@@ -68,7 +68,7 @@ export default function Nav() {
         <div className="border-b border-line bg-paper/95 px-6 pb-7 pt-2 text-ink backdrop-blur-xl lg:hidden">
           <div className="flex flex-col">
             {nav.map((n) => (
-              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="border-b border-line py-3.5 text-[1.05rem] text-ink">
+              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="border-b border-line py-3.5 font-display text-[1.1rem] uppercase tracking-wide text-ink">
                 {n.label}
               </a>
             ))}

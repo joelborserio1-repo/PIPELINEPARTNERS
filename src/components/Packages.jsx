@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "./Reveal.jsx";
-import { packages, packagesTerms, packagesSeo, packagesSeoTerms } from "../data/site.js";
+import { packages, packagesTerms, packagesSeo, packagesSeoTerms, packagesWeb, packagesWebTerms, carePlan } from "../data/site.js";
 
 const tabs = [
   { key: "leads", label: "Leads" },
@@ -51,10 +51,11 @@ function PlanGrid({ plans, terms }) {
               </>
             ) : (
               <>
-                <div className="mt-6 flex items-end gap-1">
+                <div className="mt-6 flex flex-wrap items-end gap-x-1.5">
+                  {p.from && <span className="mb-1.5 font-body text-[0.9rem] text-muted">From</span>}
                   <span className="font-display text-[0.95rem] text-muted">$</span>
                   <span className="font-display text-[3.2rem] leading-none">{fmt(p.price)}</span>
-                  <span className="mb-1.5 font-body text-[0.9rem] text-muted">/mo</span>
+                  <span className="mb-1.5 font-body text-[0.9rem] text-muted">{p.unit === "one-off" ? "one-off" : "/mo"}</span>
                 </div>
                 <div className="mt-5 border-t border-line pt-5" />
               </>
@@ -65,6 +66,8 @@ function PlanGrid({ plans, terms }) {
                 <li key={inc} className="flex items-start gap-2.5 text-muted"><Dot /> <span>{inc}</span></li>
               ))}
             </ul>
+
+            {p.bestFor && <p className="mt-5 font-body text-[0.85rem] italic text-faint">Best for: {p.bestFor}</p>}
 
             <a href="#contact" className={`btn mt-8 ${p.popular ? "btn-primary" : "btn-ghost"}`}>Get started</a>
           </motion.div>
@@ -77,13 +80,20 @@ function PlanGrid({ plans, terms }) {
   );
 }
 
-function ComingSoon({ title, body }) {
+function CarePlanBanner() {
   return (
-    <div className="mx-auto max-w-2xl rounded-2xl border border-line bg-white p-10 text-center shadow-soft md:p-14">
-      <span className="eyebrow justify-center">Coming soon</span>
-      <h3 className="mt-4 text-[clamp(1.5rem,3vw,2rem)]">{title}</h3>
-      <p className="mx-auto mt-3 max-w-md font-body text-muted">{body}</p>
-      <a href="#contact" className="btn btn-primary mt-7 px-7 py-3.5">Book a call</a>
+    <div className="mt-6 overflow-hidden rounded-2xl bg-accentDeep p-7 text-white md:p-9">
+      <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+        <div className="max-w-2xl">
+          <span className="inline-flex rounded-full bg-white/10 px-3 py-1 font-body text-[0.66rem] font-bold uppercase tracking-[0.12em] text-white/80">Optional add-on</span>
+          <div className="mt-3 flex flex-wrap items-baseline gap-x-3">
+            <h3 className="text-[1.6rem]">{carePlan.name}</h3>
+            <span className="font-display text-[1.5rem] text-white/85">From ${carePlan.priceFrom}<span className="font-body text-[0.8rem] text-white/50"> /mo</span></span>
+          </div>
+          <p className="mt-3 font-body text-[0.98rem] text-white/70">{carePlan.desc}</p>
+        </div>
+        <a href="#contact" className="btn shrink-0 bg-white px-7 py-3.5 text-ink hover:-translate-y-0.5 hover:bg-white/90">Add a Care Plan</a>
+      </div>
     </div>
   );
 }
@@ -135,10 +145,10 @@ export default function Packages() {
               {active === "leads" && <PlanGrid plans={packages} terms={packagesTerms} />}
               {active === "seo" && <PlanGrid plans={packagesSeo} terms={packagesSeoTerms} />}
               {active === "webdev" && (
-                <ComingSoon
-                  title="Website packages are on the way"
-                  body="A new site or a rebuild, tell us what you need and we will scope it and quote it. No obligation."
-                />
+                <>
+                  <PlanGrid plans={packagesWeb} terms={packagesWebTerms} />
+                  <CarePlanBanner />
+                </>
               )}
             </motion.div>
           </AnimatePresence>

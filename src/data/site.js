@@ -199,6 +199,67 @@ export const packagesSeo = [
 export const packagesSeoTerms =
   "Billed monthly. Tell us your market and what you want to rank for, and we will recommend the right tier.";
 
+// Website packages. One off build cost, plus an optional recurring Care Plan.
+export const packagesWeb = [
+  {
+    name: "Starter Site",
+    tagline: "A clean, professional presence.",
+    price: 1500,
+    unit: "one-off",
+    popular: false,
+    includes: [
+      "Up to 5 pages (Home, About, Services, Gallery, Contact)",
+      "Mobile responsive, fast loading",
+      "Contact form and Google Maps",
+      "Basic on-page SEO setup",
+      "1 round of revisions",
+    ],
+    bestFor: "A tradie who just needs to look legit online.",
+  },
+  {
+    name: "Professional Site",
+    tagline: "Built to convert, not just exist.",
+    price: 3000,
+    unit: "one-off",
+    popular: true,
+    includes: [
+      "Up to 10 pages",
+      "Custom design, not a template",
+      "Lead capture forms wired into your CRM",
+      "Conversion focused copy and layout",
+      "Booking and quote integration",
+      "Blog setup",
+      "2 rounds of revisions",
+    ],
+    bestFor: "A business serious about generating enquiries online.",
+  },
+  {
+    name: "Premium / Custom",
+    tagline: "A site that does heavy lifting.",
+    price: 5000,
+    unit: "one-off",
+    from: true,
+    popular: false,
+    includes: [
+      "Unlimited pages, fully custom build",
+      "Advanced functionality (booking systems, portals, e-commerce, animations)",
+      "Full CRM and automation integration",
+      "Premium copywriting",
+      "Ongoing revisions during build",
+    ],
+    bestFor: "Established businesses wanting a standout digital presence.",
+  },
+];
+
+export const packagesWebTerms =
+  "One off build cost, quoted and fixed before we start. Keep it humming with a Care Plan below.";
+
+export const carePlan = {
+  name: "Care Plan",
+  priceFrom: 99,
+  desc: "Hosting, security, backups, updates, small monthly changes and uptime monitoring. Keep your site fast, safe and up to date, hands off.",
+};
+
 // PLACEHOLDER TESTIMONIALS. Swap for real verified reviews before relying on these publicly.
 export const testimonials = [
   { quote: "We went from chasing quotes on shared lead sites to having our own steady flow of jobs. Every lead is ours, no one else is calling them. Booked solid three months ahead now.", name: "Dave M.", role: "Roofing, Newcastle" },
