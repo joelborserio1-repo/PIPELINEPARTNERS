@@ -84,7 +84,7 @@ export const steps = [
   {
     label: "You",
     title: "You answer and close",
-    body: "The easy part. Our automations qualify each lead, follow up, and book it straight into your calendar, so you skip the chasing. You just pick up and say yes.",
+    body: "The easy part. Our automated follow up does the chasing, qualifying and nurturing for you, then sends warm, ready to book leads straight to your phone. You just pick up and say yes.",
   },
 ];
 
