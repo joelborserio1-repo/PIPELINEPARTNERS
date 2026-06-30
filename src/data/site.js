@@ -22,8 +22,16 @@ export const nav = [
 
 // Meet the team. Add photos and fuller bios when ready.
 export const team = [
-  { name: "Brendan", role: "Co-founder", blurb: "Builds and runs the campaigns that keep your pipeline full." },
-  { name: "Joel", role: "Co-founder", blurb: "Makes sure every lead is exclusive and every promise is kept." },
+  {
+    name: "Joel",
+    role: "Co-founder, Campaigns and Build",
+    blurb: "The build and the numbers. Joel runs the campaigns and monitors the figures, and manages the automations, workflows and website development that keep your pipeline full.",
+  },
+  {
+    name: "Brendan",
+    role: "Co-founder, Clients and Strategy",
+    blurb: "Your main point of contact. Brendan looks after customer relationships, onboarding and implementation, account strategy, and everything else that keeps your campaigns moving and your questions answered.",
+  },
 ];
 
 export const heroBullets = [
