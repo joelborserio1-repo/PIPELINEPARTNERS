@@ -34,7 +34,7 @@ export const heroBullets = [
 
 // Honest, brand fact stats only. Nothing invented.
 export const stats = [
-  { value: 1, suffix: "", label: "business per area, per vertical" },
+  { value: 1, suffix: "", label: "business per area, per industry. Yours alone" },
   { value: 100, suffix: "%", label: "done for you, end to end" },
   { value: 0, prefix: "$", label: "setup fee, ever" },
 ];
@@ -69,7 +69,7 @@ export const steps = [
   {
     label: "First",
     title: "We claim your area",
-    body: "We lock your area and vertical to you alone, agree the monthly minimum in writing, then build the campaigns from scratch.",
+    body: "We lock your area and industry to you alone, agree the monthly minimum in writing, then build the campaigns from scratch.",
   },
   {
     label: "Then",
