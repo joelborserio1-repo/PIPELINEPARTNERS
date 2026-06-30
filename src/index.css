@@ -3,16 +3,20 @@
 @tailwind utilities;
 
 @layer base {
-  :root { color-scheme: dark; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     @apply bg-paper text-ink font-body antialiased;
     overflow-x: hidden;
   }
-  h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.04; }
+  /* Newport style: heavy condensed uppercase display headings */
+  h1, h2, h3, h4 {
+    @apply font-display;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+  }
   ::selection { background: theme("colors.accent"); color: #fff; }
-  /* hairline divider between stacked sections so each reads as its own block */
-  main > section + section { @apply border-t border-line; }
   /* subtle film grain for depth */
   body::after {
     content: "";
@@ -24,12 +28,13 @@
 
 @layer components {
   .wrap { @apply mx-auto w-full max-w-wrap px-6 md:px-10; }
+  /* eyebrow as a rounded pill */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-accent2;
+    @apply inline-flex items-center gap-2 rounded-full bg-accent/10 px-3.5 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.14em] text-accent2;
+    font-family: theme("fontFamily.body");
   }
-  .eyebrow::before { content: ""; @apply inline-block h-[2px] w-6 rounded bg-accent; }
   .btn {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[0.98rem] font-semibold transition-all duration-300;
+    @apply relative inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-[0.98rem] font-semibold transition-all duration-300;
   }
   .btn-primary {
     @apply bg-accent text-white shadow-glow hover:-translate-y-0.5 hover:brightness-110;
@@ -37,11 +42,14 @@
   .btn-ghost {
     @apply border border-line2 text-ink hover:border-ink/40 hover:bg-black/[0.04];
   }
-  .card { @apply rounded-3xl border border-line bg-white shadow-soft; }
+  .card { @apply rounded-2xl border border-line bg-white shadow-soft; }
   .chip { @apply grid h-12 w-12 place-items-center rounded-2xl bg-accent/10 text-accent ring-1 ring-accent/15; }
+  /* marquee */
+  .marquee-track { display: inline-flex; white-space: nowrap; animation: marquee 28s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 }
 
-/* Respect reduced motion for any CSS transitions/animations */
+/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -49,4 +57,5 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  .marquee-track { animation: none !important; }
 }

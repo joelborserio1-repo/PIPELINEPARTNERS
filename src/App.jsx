@@ -1,5 +1,6 @@
 import Nav from "./components/Nav.jsx";
 import Hero from "./components/Hero.jsx";
+import Marquee from "./components/Marquee.jsx";
 import Services from "./components/Services.jsx";
 import Packages from "./components/Packages.jsx";
 import HowItWorks from "./components/HowItWorks.jsx";
@@ -18,6 +19,7 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <Marquee />
         <Services />
         <Packages />
         <HowItWorks />

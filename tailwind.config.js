@@ -20,7 +20,8 @@ export default {
         faint: "#8a8b93",
       },
       fontFamily: {
-        display: ['"Space Grotesk"', "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ['"Anton"', '"Space Grotesk"', "ui-sans-serif", "system-ui", "sans-serif"],
+        alt: ['"Space Grotesk"', "ui-sans-serif", "system-ui", "sans-serif"],
         body: ['"Inter"', "ui-sans-serif", "system-ui", "sans-serif"],
       },
       maxWidth: { wrap: "1200px" },

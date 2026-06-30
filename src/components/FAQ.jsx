@@ -7,7 +7,7 @@ function Item({ q, a, open, onToggle, id }) {
   return (
     <div className="border-b border-line">
       <button
-        className="flex w-full items-center justify-between gap-5 py-6 text-left font-display text-[1.12rem] font-medium transition-colors hover:text-accent2"
+        className="flex w-full items-center justify-between gap-5 py-6 text-left font-alt text-[1.12rem] font-medium transition-colors hover:text-accent2"
         aria-expanded={open}
         aria-controls={id}
         onClick={onToggle}
