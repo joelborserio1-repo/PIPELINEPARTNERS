@@ -63,6 +63,11 @@ export const services = [
     title: "Social Media Marketing",
     desc: "Build presence and pull in enquiries across Meta and beyond, so your brand keeps working even when the ads are off.",
   },
+  {
+    key: "webdev",
+    title: "Website Development & Management",
+    desc: "We build and look after a fast, modern site that turns clicks into enquiries, then keep it updated and online so it never lets a lead slip.",
+  },
 ];
 
 export const steps = [
@@ -79,7 +84,7 @@ export const steps = [
   {
     label: "You",
     title: "You answer and close",
-    body: "The easy part. You pick up the phone and book the job. We handle the marketing, the tracking and the reporting, and keep the leads coming month after month.",
+    body: "The easy part. Our automations qualify each lead, follow up, and book it straight into your calendar, so you skip the chasing. You just pick up and say yes.",
   },
 ];
 
