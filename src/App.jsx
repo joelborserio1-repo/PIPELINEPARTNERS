@@ -13,7 +13,8 @@ function ScrollManager() {
         if (el) el.scrollIntoView({ behavior: "smooth" });
       });
     } else {
-      window.scrollTo({ top: 0 });
+      // jump instantly to the top on page change (no smooth slide)
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     }
   }, [pathname, hash]);
   return null;
