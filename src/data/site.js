@@ -291,13 +291,14 @@ export const carePlan = {
   desc: "Hosting, security, backups, updates, small monthly changes and uptime monitoring. Keep your site fast, safe and up to date, hands off.",
 };
 
-// PLACEHOLDER TESTIMONIALS. Swap for real verified reviews before relying on these publicly.
+// Client supplied testimonials.
 export const testimonials = [
-  { quote: "We went from chasing quotes on shared lead sites to having our own steady flow of jobs. Every lead is ours, no one else is calling them. Booked solid three months ahead now.", name: "Dave M.", role: "Roofing, Newcastle" },
-  { quote: "The phone actually rings with real local jobs, not tyre kickers. And I am not paying for leads that go nowhere. It just works.", name: "Sarah T.", role: "Plumbing, Lake Macquarie" },
-  { quote: "Being the only sparky getting that customer's call makes all the difference. No race to the bottom on price. Best marketing decision we have made.", name: "Jason K.", role: "Electrical, Hunter Valley" },
-  { quote: "Parents find us, book an assessment, and we fill our terms. The enquiries are exactly the families we want. Could not run without it now.", name: "Priya S.", role: "Tutoring, Sydney" },
-  { quote: "Straight up, no lock in, and they only get paid when the leads land. That told me everything. Six months in and the pipeline has not dried up.", name: "Mark R.", role: "Building, Central Coast" },
+  { quote: "We were relying on word of mouth and referrals, but work was unpredictable. Within a few weeks we started getting genuine local enquiries from people actually looking for an electrician. The biggest difference is knowing every lead is ours and we are not competing against five other companies.", name: "Jason K.", role: "Electrical, Hunter Region", rating: 5 },
+  { quote: "The quality of the enquiries has been far better than anything we have used before. We spend less time quoting jobs that go nowhere and more time working. Having exclusive leads has completely changed the way we book our weeks.", name: "Sarah T.", role: "Plumbing, Lake Macquarie", rating: 5 },
+  { quote: "We wanted more than just traffic, we needed customers. The store feels like it finally has momentum. The whole process was straightforward, communication was excellent and everything was focused on growing sales, not vanity metrics.", name: "Michael R.", role: "Ecommerce, Newcastle", rating: 5 },
+  { quote: "We were struggling to keep a steady flow of new members each month. Now we have consistent enquiries coming through and people are booking trials every week. It has given us confidence to keep growing instead of wondering where the next member is coming from.", name: "Emily C.", role: "Fitness Studio, Central Coast", rating: 5 },
+  { quote: "Our old website looked dated and did not reflect the quality of our business. The new site loads fast, looks professional and finally gives customers confidence when they land on it. We have had so many compliments since launching.", name: "Daniel W.", role: "Building Company, Newcastle", rating: 5 },
+  { quote: "We used to be buried in Google. Over time we have started appearing where our customers are actually searching, and the increase in organic enquiries has been noticeable. It finally feels like our website is working for us instead of just existing.", name: "Rebecca M.", role: "Professional Services, Mid North Coast", rating: 5 },
 ];
 
 export const comparison = [
