@@ -7,6 +7,8 @@ export const brand = {
   promise: "We take the risk. You take the work.",
   domain: "https://pipelinepartners.com.au",
   city: "Newcastle",
+  phone: "+61 468 165 126",
+  phoneHref: "tel:+61468165126",
   // GoHighLevel inline form id used in the Contact section.
   ghlFormId: "yP1jbWcsbMe8gaXBFCzL",
 };

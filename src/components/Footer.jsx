@@ -22,6 +22,10 @@ export default function Footer() {
             <p className="mt-4 text-[0.95rem] text-white/60">
               Exclusive, guaranteed lead generation for local service businesses. We run the marketing so you keep the work flowing.
             </p>
+            <a href={brand.phoneHref} className="mt-4 inline-block font-body text-[0.95rem] font-semibold text-white/85 hover:text-white">
+              {brand.phone}
+            </a>
+            <p className="mt-1 font-body text-[0.85rem] text-white/45">Newcastle, NSW</p>
           </div>
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">

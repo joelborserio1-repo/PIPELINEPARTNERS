@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Reveal } from "./Reveal.jsx";
-import { formOptions, resolveFormId } from "../data/site.js";
+import { brand, formOptions, resolveFormId } from "../data/site.js";
 
 const reassure = [
   "No obligation and no hard sell.",
@@ -61,6 +61,10 @@ export default function Contact({ service = "general", onService, fixedService }
               </li>
             ))}
           </ul>
+          <p className="mt-6 text-center font-body text-[0.95rem] text-white/70">
+            Prefer to talk now? Call{" "}
+            <a href={brand.phoneHref} className="font-semibold text-white underline-offset-4 hover:underline">{brand.phone}</a>
+          </p>
         </Reveal>
 
         <Reveal delay={0.1}>
