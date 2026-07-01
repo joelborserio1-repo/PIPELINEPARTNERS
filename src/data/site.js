@@ -16,7 +16,7 @@ export const brand = {
 export const formIds = {
   general: "P5odBwmLo09OAkzhAktp",
   leads: "yP1jbWcsbMe8gaXBFCzL",
-  seo: "",
+  seo: "8wsbaW3xBYg02rr9Qdfg",
   webdev: "",
 };
 
