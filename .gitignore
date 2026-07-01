@@ -9,3 +9,6 @@ node_modules/
 # build output (Cloudflare Pages builds this)
 dist/
 .vite/
+
+# prerender temp
+.prerender/

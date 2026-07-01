@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Paid landing pages use a noindex meta tag, so they are not crawled into search.
 Sitemap: https://pipelinepartners.com.au/sitemap.xml

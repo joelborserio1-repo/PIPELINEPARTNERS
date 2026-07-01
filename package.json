@@ -6,7 +6,7 @@
   "description": "Pipeline Partners agency site. React + Vite + Tailwind + Framer Motion. Deploys to Cloudflare Pages.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
