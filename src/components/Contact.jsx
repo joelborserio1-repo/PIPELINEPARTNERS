@@ -16,8 +16,9 @@ function Check() {
   );
 }
 
-export default function Contact({ service = "general", onService }) {
-  const fid = resolveFormId(service);
+export default function Contact({ service = "general", onService, fixedService }) {
+  const active = fixedService || service;
+  const fid = resolveFormId(active);
 
   useEffect(() => {
     // Load the GoHighLevel embed helper once (auto-resizes the iframe).
@@ -35,12 +36,12 @@ export default function Contact({ service = "general", onService }) {
       const submitted = d && (d.type === "form-submitted" || (typeof d === "string" && d.indexOf("submit") !== -1));
       if (submitted) {
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "generate_lead", source: "agency-site", service });
+        window.dataLayer.push({ event: "generate_lead", source: "agency-site", service: active });
       }
     };
     window.addEventListener("message", onMsg);
     return () => window.removeEventListener("message", onMsg);
-  }, [service]);
+  }, [active]);
 
   return (
     <section id="contact" className="bg-accentDeep py-24 text-white md:py-32">
@@ -63,21 +64,23 @@ export default function Contact({ service = "general", onService }) {
         </Reveal>
 
         <Reveal delay={0.1}>
-          {/* what are you after? sets which GHL form shows */}
-          <div className="mx-auto mt-9 flex w-fit max-w-full items-center gap-1 overflow-x-auto rounded-full bg-white/10 p-1.5">
-            {formOptions.map((o) => (
-              <button
-                key={o.key}
-                onClick={() => onService && onService(o.key)}
-                aria-pressed={service === o.key}
-                className={`whitespace-nowrap rounded-full px-4 py-2 font-body text-[0.78rem] font-bold uppercase tracking-wide transition-colors ${
-                  service === o.key ? "bg-white text-ink" : "text-white/70 hover:text-white"
-                }`}
-              >
-                {o.label}
-              </button>
-            ))}
-          </div>
+          {/* what are you after? sets which GHL form shows (homepage only) */}
+          {!fixedService && (
+            <div className="mx-auto mt-9 flex w-fit max-w-full items-center gap-1 overflow-x-auto rounded-full bg-white/10 p-1.5">
+              {formOptions.map((o) => (
+                <button
+                  key={o.key}
+                  onClick={() => onService && onService(o.key)}
+                  aria-pressed={active === o.key}
+                  className={`whitespace-nowrap rounded-full px-4 py-2 font-body text-[0.78rem] font-bold uppercase tracking-wide transition-colors ${
+                    active === o.key ? "bg-white text-ink" : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  {o.label}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* the form sits in a clean white panel so it reads as a deliberate
               part of the page. Style the form itself in GoHighLevel (font Inter,

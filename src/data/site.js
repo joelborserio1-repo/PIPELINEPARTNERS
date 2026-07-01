@@ -320,3 +320,74 @@ export const faqs = [
   { q: "Which channels do you use?", a: "Google Ads is the core. At Scale we add Meta. SEO and social media are available as supporting services." },
   { q: "Which industries do you cover?", a: "Trades and home services, health and fitness, clinics and practitioners, and other local service businesses. If you are not sure you fit, ask." },
 ];
+
+// Per service landing pages: /leadgen, /seo, /webdev.
+// tab = which Packages tab to show. formKey = which GHL form to embed.
+export const landings = {
+  leadgen: {
+    slug: "leadgen",
+    tab: "leads",
+    formKey: "leads",
+    eyebrow: "Exclusive, guaranteed leads",
+    h1: "Exclusive leads, guaranteed. You just answer the phone.",
+    sub: "We run all the marketing and send exclusive local jobs straight to you. A written monthly minimum every month, or you do not pay.",
+    bullets: [
+      { strong: "Exclusive to you.", rest: "Never shared, never resold to a rival." },
+      { strong: "A guaranteed minimum,", rest: "agreed in writing, every month." },
+      { strong: "No leads, no pay.", rest: "The risk sits with us." },
+    ],
+    pointsTitle: "How the lead engine works.",
+    points: [
+      { title: "Exclusive by contract", body: "Every lead is yours alone. Never shared, never resold to a competitor in your area." },
+      { title: "A written monthly minimum", body: "We agree a set number of leads up front. Miss it and you only pay for what actually arrived." },
+      { title: "Fully done for you", body: "Google Ads, tracking and automated follow up. Every enquiry lands in your CRM and on your phone." },
+    ],
+    guarantee: true,
+    metaTitle: "Exclusive, Guaranteed Lead Generation | Pipeline Partners",
+    metaDesc: "Exclusive local leads for service businesses, with a guaranteed monthly minimum. No leads, no pay. We run the Google Ads, you answer the phone.",
+  },
+  seo: {
+    slug: "seo",
+    tab: "seo",
+    formKey: "seo",
+    eyebrow: "Local SEO that ranks",
+    h1: "Get found first when locals search for you.",
+    sub: "We put your business at the top of Google for the searches that bring real jobs, and keep it climbing month after month.",
+    bullets: [
+      { strong: "Rank locally.", rest: "Show up first for the searches that matter in your area." },
+      { strong: "Built to compound.", rest: "Rankings that grow while your ads do the heavy lifting now." },
+      { strong: "Clear reporting.", rest: "See exactly where you rank and what we are doing." },
+    ],
+    pointsTitle: "What your SEO covers.",
+    points: [
+      { title: "Local search domination", body: "Google Business Profile, local listings and on-page work so you show up where your customers look." },
+      { title: "Content and links", body: "Content that answers what buyers search for, plus quality local links that build your authority." },
+      { title: "Tracked and reported", body: "Keyword tracking and regular reports, so you always know it is working." },
+    ],
+    guarantee: false,
+    metaTitle: "Local SEO for Service Businesses | Pipeline Partners",
+    metaDesc: "Local SEO that ranks your business first for the searches that bring real jobs. Google Business Profile, on-page, content and links, tracked and reported.",
+  },
+  webdev: {
+    slug: "webdev",
+    tab: "webdev",
+    formKey: "webdev",
+    eyebrow: "Websites that convert",
+    h1: "A website that turns clicks into booked jobs.",
+    sub: "Fast, modern and built to capture enquiries, wired straight into your CRM. Then we keep it running for you.",
+    bullets: [
+      { strong: "Built to convert.", rest: "Not just a brochure. Every page nudges visitors to enquire." },
+      { strong: "Wired to your CRM.", rest: "Leads flow straight into your pipeline and follow up." },
+      { strong: "Looked after.", rest: "An optional Care Plan keeps it fast, safe and up to date." },
+    ],
+    pointsTitle: "What you get.",
+    points: [
+      { title: "Custom, not a template", body: "Designed around your business and built to load fast on every device." },
+      { title: "Lead capture baked in", body: "Forms, booking and quote tools wired into your CRM, so no enquiry slips." },
+      { title: "Care Plan option", body: "Hosting, security, backups and updates handled for you, from $99 a month." },
+    ],
+    guarantee: false,
+    metaTitle: "Website Design and Development | Pipeline Partners",
+    metaDesc: "Fast, modern websites built to capture enquiries and wired into your CRM. New builds and rebuilds, plus a Care Plan to keep it running.",
+  },
+};

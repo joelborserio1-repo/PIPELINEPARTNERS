@@ -98,8 +98,8 @@ function CarePlanBanner({ onEnquire }) {
   );
 }
 
-export default function Packages({ onEnquire }) {
-  const [active, setActive] = useState("leads");
+export default function Packages({ onEnquire, defaultTab = "leads", hideTabs = false }) {
+  const [active, setActive] = useState(defaultTab);
   const reduce = useReducedMotion();
 
   return (
@@ -110,28 +110,30 @@ export default function Packages({ onEnquire }) {
             <span className="eyebrow justify-center">Packages</span>
             <h2 className="mt-4 text-[clamp(2rem,4.6vw,3.4rem)]">Choose your package.</h2>
             <p className="mt-4 font-body text-muted">
-              Lead generation is a monthly fee plus ad spend at cost, backed by the guarantee. SEO and websites are priced separately. Pick a tab.
+              Transparent pricing, no surprises. Lead generation is a monthly fee plus ad spend at cost, backed by the guarantee. SEO and websites are priced separately.
             </p>
           </div>
         </Reveal>
 
         {/* tabs */}
-        <Reveal delay={0.06}>
-          <div className="mx-auto mt-8 flex w-fit max-w-full items-center gap-1 overflow-x-auto rounded-full border border-line bg-white p-1.5 shadow-soft">
-            {tabs.map((t) => (
-              <button
-                key={t.key}
-                onClick={() => setActive(t.key)}
-                aria-pressed={active === t.key}
-                className={`whitespace-nowrap rounded-full px-5 py-2.5 font-body text-[0.82rem] font-bold uppercase tracking-wide transition-colors ${
-                  active === t.key ? "bg-accent text-white" : "text-muted hover:text-ink"
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-        </Reveal>
+        {!hideTabs && (
+          <Reveal delay={0.06}>
+            <div className="mx-auto mt-8 flex w-fit max-w-full items-center gap-1 overflow-x-auto rounded-full border border-line bg-white p-1.5 shadow-soft">
+              {tabs.map((t) => (
+                <button
+                  key={t.key}
+                  onClick={() => setActive(t.key)}
+                  aria-pressed={active === t.key}
+                  className={`whitespace-nowrap rounded-full px-5 py-2.5 font-body text-[0.82rem] font-bold uppercase tracking-wide transition-colors ${
+                    active === t.key ? "bg-accent text-white" : "text-muted hover:text-ink"
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </Reveal>
+        )}
 
         <div className="mt-10">
           <AnimatePresence mode="wait">
