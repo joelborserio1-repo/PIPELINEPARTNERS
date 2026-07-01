@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Nav from "./components/Nav.jsx";
 import Hero from "./components/Hero.jsx";
 import Marquee from "./components/Marquee.jsx";
@@ -14,6 +15,9 @@ import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 
 export default function App() {
+  // which GHL form the contact section shows. Set by the pricing tab CTAs.
+  const [service, setService] = useState("general");
+
   return (
     <>
       <Nav />
@@ -21,7 +25,7 @@ export default function App() {
         <Hero />
         <Marquee />
         <Services />
-        <Packages />
+        <Packages onEnquire={setService} />
         <HowItWorks />
         <Guarantee />
         <Results />
@@ -29,7 +33,7 @@ export default function App() {
         <About />
         <Team />
         <FAQ />
-        <Contact />
+        <Contact service={service} onService={setService} />
       </main>
       <Footer />
     </>

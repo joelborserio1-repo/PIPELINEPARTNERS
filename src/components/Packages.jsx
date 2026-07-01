@@ -12,7 +12,7 @@ const tabs = [
 function fmt(n) { return n.toLocaleString("en-AU"); }
 function Dot() { return <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-accent" />; }
 
-function PlanGrid({ plans, terms }) {
+function PlanGrid({ plans, terms, serviceKey, onEnquire }) {
   return (
     <>
       <div className="grid items-stretch gap-5 lg:grid-cols-3">
@@ -69,7 +69,7 @@ function PlanGrid({ plans, terms }) {
 
             {p.bestFor && <p className="mt-5 font-body text-[0.85rem] italic text-faint">Best for: {p.bestFor}</p>}
 
-            <a href="#contact" className={`btn mt-8 ${p.popular ? "btn-primary" : "btn-ghost"}`}>Get started</a>
+            <a href="#contact" onClick={() => onEnquire && onEnquire(serviceKey)} className={`btn mt-8 ${p.popular ? "btn-primary" : "btn-ghost"}`}>Get started</a>
           </motion.div>
         ))}
       </div>
@@ -80,7 +80,7 @@ function PlanGrid({ plans, terms }) {
   );
 }
 
-function CarePlanBanner() {
+function CarePlanBanner({ onEnquire }) {
   return (
     <div className="mt-6 overflow-hidden rounded-2xl bg-accentDeep p-7 text-white md:p-9">
       <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
@@ -92,13 +92,13 @@ function CarePlanBanner() {
           </div>
           <p className="mt-3 font-body text-[0.98rem] text-white/70">{carePlan.desc}</p>
         </div>
-        <a href="#contact" className="btn shrink-0 bg-white px-7 py-3.5 text-ink hover:-translate-y-0.5 hover:bg-white/90">Add a Care Plan</a>
+        <a href="#contact" onClick={() => onEnquire && onEnquire("webdev")} className="btn shrink-0 bg-white px-7 py-3.5 text-ink hover:-translate-y-0.5 hover:bg-white/90">Add a Care Plan</a>
       </div>
     </div>
   );
 }
 
-export default function Packages() {
+export default function Packages({ onEnquire }) {
   const [active, setActive] = useState("leads");
   const reduce = useReducedMotion();
 
@@ -142,12 +142,12 @@ export default function Packages() {
               exit={reduce ? {} : { opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
-              {active === "leads" && <PlanGrid plans={packages} terms={packagesTerms} />}
-              {active === "seo" && <PlanGrid plans={packagesSeo} terms={packagesSeoTerms} />}
+              {active === "leads" && <PlanGrid plans={packages} terms={packagesTerms} serviceKey="leads" onEnquire={onEnquire} />}
+              {active === "seo" && <PlanGrid plans={packagesSeo} terms={packagesSeoTerms} serviceKey="seo" onEnquire={onEnquire} />}
               {active === "webdev" && (
                 <>
-                  <PlanGrid plans={packagesWeb} terms={packagesWebTerms} />
-                  <CarePlanBanner />
+                  <PlanGrid plans={packagesWeb} terms={packagesWebTerms} serviceKey="webdev" onEnquire={onEnquire} />
+                  <CarePlanBanner onEnquire={onEnquire} />
                 </>
               )}
             </motion.div>

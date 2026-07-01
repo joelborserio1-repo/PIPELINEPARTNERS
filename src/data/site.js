@@ -11,6 +11,27 @@ export const brand = {
   ghlFormId: "yP1jbWcsbMe8gaXBFCzL",
 };
 
+// GoHighLevel form ids. `general` is the default. Paste each sector form id
+// here as they are built. An empty id falls back to the general form.
+export const formIds = {
+  general: "yP1jbWcsbMe8gaXBFCzL",
+  leads: "",
+  seo: "",
+  webdev: "",
+};
+
+export const formOptions = [
+  { key: "general", label: "General" },
+  { key: "leads", label: "Leads" },
+  { key: "seo", label: "SEO" },
+  { key: "webdev", label: "Web" },
+];
+
+export function resolveFormId(key) {
+  const id = formIds[key];
+  return (id && id.trim()) || formIds.general;
+}
+
 export const nav = [
   { label: "Services", href: "#services" },
   { label: "Pricing", href: "#pricing" },

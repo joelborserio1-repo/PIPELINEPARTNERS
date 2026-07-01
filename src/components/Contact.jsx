@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Reveal } from "./Reveal.jsx";
-import { brand } from "../data/site.js";
+import { formOptions, resolveFormId } from "../data/site.js";
 
 const reassure = [
   "No obligation and no hard sell.",
@@ -16,7 +16,9 @@ function Check() {
   );
 }
 
-export default function Contact() {
+export default function Contact({ service = "general", onService }) {
+  const fid = resolveFormId(service);
+
   useEffect(() => {
     // Load the GoHighLevel embed helper once (auto-resizes the iframe).
     const SRC = "https://link.msgsndr.com/js/form_embed.js";
@@ -33,12 +35,12 @@ export default function Contact() {
       const submitted = d && (d.type === "form-submitted" || (typeof d === "string" && d.indexOf("submit") !== -1));
       if (submitted) {
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "generate_lead", source: "agency-site" });
+        window.dataLayer.push({ event: "generate_lead", source: "agency-site", service });
       }
     };
     window.addEventListener("message", onMsg);
     return () => window.removeEventListener("message", onMsg);
-  }, []);
+  }, [service]);
 
   return (
     <section id="contact" className="bg-accentDeep py-24 text-white md:py-32">
@@ -61,21 +63,37 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.1}>
+          {/* what are you after? sets which GHL form shows */}
+          <div className="mx-auto mt-9 flex w-fit max-w-full items-center gap-1 overflow-x-auto rounded-full bg-white/10 p-1.5">
+            {formOptions.map((o) => (
+              <button
+                key={o.key}
+                onClick={() => onService && onService(o.key)}
+                aria-pressed={service === o.key}
+                className={`whitespace-nowrap rounded-full px-4 py-2 font-body text-[0.78rem] font-bold uppercase tracking-wide transition-colors ${
+                  service === o.key ? "bg-white text-ink" : "text-white/70 hover:text-white"
+                }`}
+              >
+                {o.label}
+              </button>
+            ))}
+          </div>
+
           {/* the form sits in a clean white panel so it reads as a deliberate
-              part of the page, not a floating embed. Style the form itself in
-              GoHighLevel (font Inter, navy #1E40AF button, rounded fields) to
-              finish the match. */}
-          <div className="mx-auto mt-12 w-full max-w-[880px] overflow-hidden rounded-3xl bg-white p-2 shadow-card sm:p-3">
+              part of the page. Style the form itself in GoHighLevel (font Inter,
+              navy #1E40AF button, rounded fields) to finish the match. */}
+          <div className="mx-auto mt-6 w-full max-w-[880px] overflow-hidden rounded-3xl bg-white p-2 shadow-card sm:p-3">
             <div className="flex items-center justify-between px-4 pb-2 pt-3">
               <span className="font-body text-[0.72rem] font-bold uppercase tracking-[0.14em] text-accent2">Free area check</span>
               <span className="font-body text-[0.78rem] text-muted">Takes under a minute</span>
             </div>
             <iframe
-              src={`https://api.leadconnectorhq.com/widget/form/${brand.ghlFormId}`}
+              key={fid}
+              src={`https://api.leadconnectorhq.com/widget/form/${fid}`}
               title="Pipeline Partners enquiry"
-              id={`inline-${brand.ghlFormId}`}
+              id={`inline-${fid}`}
               data-layout="{'id':'INLINE'}"
-              data-form-id={brand.ghlFormId}
+              data-form-id={fid}
               className="block w-full rounded-2xl border-0 bg-white"
               style={{ width: "100%", minHeight: 720 }}
             />
