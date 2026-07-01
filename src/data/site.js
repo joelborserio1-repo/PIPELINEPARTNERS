@@ -14,8 +14,8 @@ export const brand = {
 // GoHighLevel form ids. `general` is the default. Paste each sector form id
 // here as they are built. An empty id falls back to the general form.
 export const formIds = {
-  general: "yP1jbWcsbMe8gaXBFCzL",
-  leads: "",
+  general: "P5odBwmLo09OAkzhAktp",
+  leads: "yP1jbWcsbMe8gaXBFCzL",
   seo: "",
   webdev: "",
 };
