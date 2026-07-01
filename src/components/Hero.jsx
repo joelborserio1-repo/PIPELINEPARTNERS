@@ -26,10 +26,7 @@ export default function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           {/* copy */}
           <div>
-            <motion.span {...rise(0)} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.14em] text-white/80">
-              Exclusive, guaranteed leads
-            </motion.span>
-            <motion.h1 {...rise(0.08)} className="mt-6 text-[clamp(2.9rem,7vw,5.4rem)] leading-[0.92]">
+            <motion.h1 {...rise(0.04)} className="text-[clamp(2.9rem,7vw,5.4rem)] leading-[0.92]">
               {brand.promise}
             </motion.h1>
             <motion.p {...rise(0.16)} className="mt-6 max-w-xl text-[clamp(1.05rem,1.5vw,1.22rem)] text-white/70">

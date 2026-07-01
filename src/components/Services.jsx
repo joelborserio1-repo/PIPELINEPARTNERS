@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Reveal } from "./Reveal.jsx";
 import { services } from "../data/site.js";
 import { serviceIcons, IconCheck } from "./icons.jsx";
+
+const routeFor = { leadgen: "/leadgen", seo: "/seo", webdev: "/webdev" };
 
 const lead = services.find((s) => s.featured);
 const others = services.filter((s) => !s.featured);
@@ -39,7 +42,7 @@ export default function Services() {
                 </div>
                 <h3 className="mt-5 text-[clamp(1.7rem,3vw,2.4rem)]">{lead.title}</h3>
                 <p className="mt-3 text-[1.05rem] text-muted">{lead.desc}</p>
-                <a href="#contact" className="btn btn-primary mt-7 px-7 py-3.5">Claim your area</a>
+                <Link to="/leadgen" className="btn btn-primary mt-7 px-7 py-3.5">Explore lead generation</Link>
               </div>
               <ul className="grid gap-3 sm:grid-cols-2 md:grid-cols-1">
                 {lead.points.map((p) => (
@@ -66,6 +69,12 @@ export default function Services() {
                   <span className="chip">{Icon ? <Icon className="h-6 w-6" /> : null}</span>
                   <h3 className="mt-5 text-[1.35rem]">{s.title}</h3>
                   <p className="mt-2.5 text-[0.98rem] text-muted">{s.desc}</p>
+                  {routeFor[s.key] && (
+                    <Link to={routeFor[s.key]} className="mt-4 inline-flex items-center gap-1.5 font-body text-[0.9rem] font-semibold text-accent2 hover:gap-2.5">
+                      Learn more
+                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </Link>
+                  )}
                 </motion.article>
               </Reveal>
             );
