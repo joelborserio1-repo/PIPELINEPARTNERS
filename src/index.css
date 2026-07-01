@@ -21,7 +21,7 @@
   body::after {
     content: "";
     position: fixed; inset: 0; z-index: 9998; pointer-events: none;
-    opacity: 0.02; mix-blend-mode: multiply;
+    opacity: 0.035; mix-blend-mode: screen;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
@@ -40,9 +40,9 @@
     @apply bg-accent text-white shadow-glow hover:-translate-y-0.5 hover:brightness-110;
   }
   .btn-ghost {
-    @apply border border-line2 text-ink hover:border-ink/40 hover:bg-black/[0.04];
+    @apply border border-line2 text-ink hover:border-ink/40 hover:bg-white/[0.06];
   }
-  .card { @apply rounded-2xl border border-line bg-white shadow-soft; }
+  .card { @apply rounded-2xl border border-line bg-surface shadow-soft; }
   .chip { @apply grid h-12 w-12 place-items-center rounded-2xl bg-accent/10 text-accent ring-1 ring-accent/15; }
   /* marquee */
   .marquee-track { display: inline-flex; white-space: nowrap; animation: marquee 28s linear infinite; }

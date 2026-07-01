@@ -77,7 +77,7 @@ export default function Contact({ service = "general", onService, fixedService }
                   onClick={() => onService && onService(o.key)}
                   aria-pressed={active === o.key}
                   className={`whitespace-nowrap rounded-full px-4 py-2 font-body text-[0.78rem] font-bold uppercase tracking-wide transition-colors ${
-                    active === o.key ? "bg-white text-ink" : "text-white/70 hover:text-white"
+                    active === o.key ? "bg-white text-onlight" : "text-white/70 hover:text-white"
                   }`}
                 >
                   {o.label}
@@ -92,7 +92,7 @@ export default function Contact({ service = "general", onService, fixedService }
           <div className="mx-auto mt-6 w-full max-w-[880px] overflow-hidden rounded-3xl bg-white p-2 shadow-card sm:p-3">
             <div className="flex items-center justify-between px-4 pb-2 pt-3">
               <span className="font-body text-[0.72rem] font-bold uppercase tracking-[0.14em] text-accent2">Free area check</span>
-              <span className="font-body text-[0.78rem] text-muted">Takes under a minute</span>
+              <span className="font-body text-[0.78rem] text-[#6f6862]">Takes under a minute</span>
             </div>
             <iframe
               key={fid}

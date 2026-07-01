@@ -19,7 +19,7 @@ export default function Guarantee() {
             <h2 className="mt-5 text-[clamp(3rem,8vw,5.5rem)] leading-[0.9]">
               No leads.<span className="block text-white/55">No pay.</span>
             </h2>
-            <a href="#contact" className="btn mt-8 bg-white px-7 py-4 text-ink hover:-translate-y-0.5 hover:bg-white/90">Put us on the hook</a>
+            <a href="#contact" className="btn mt-8 bg-white px-7 py-4 text-onlight hover:-translate-y-0.5 hover:bg-white/90">Put us on the hook</a>
           </Reveal>
 
           <Reveal delay={0.1}>

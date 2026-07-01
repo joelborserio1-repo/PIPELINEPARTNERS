@@ -23,7 +23,7 @@ export default function HowItWorks() {
             const Icon = stepIcons[i] || stepIcons[0];
             return (
               <Reveal key={s.title} delay={0.12 * i}>
-                <div className="relative rounded-3xl border border-line bg-white p-7 shadow-soft">
+                <div className="relative rounded-3xl border border-line bg-surface p-7 shadow-soft">
                   <div className="flex items-center gap-4">
                     <span className="grid h-14 w-14 flex-none place-items-center rounded-2xl bg-accent text-white shadow-glow">
                       <Icon className="h-6 w-6" />

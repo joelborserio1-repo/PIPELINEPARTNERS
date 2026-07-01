@@ -25,7 +25,7 @@ export default function HeroVisual() {
         initial={reduce ? false : { opacity: 0, y: 24, scale: 0.98 }}
         animate={reduce ? {} : { opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-        className="rounded-3xl border border-line bg-white p-5 shadow-card"
+        className="rounded-3xl border border-line bg-surface p-5 shadow-card"
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -70,7 +70,7 @@ export default function HeroVisual() {
         initial={reduce ? false : { opacity: 0, scale: 0.8, y: 10 }}
         animate={reduce ? {} : { opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 1.1 }}
-        className="absolute -bottom-5 -left-5 flex items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 shadow-card"
+        className="absolute -bottom-5 -left-5 flex items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3 shadow-card"
       >
         <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-white shadow-glow">
           <IconPhone className="h-5 w-5" />

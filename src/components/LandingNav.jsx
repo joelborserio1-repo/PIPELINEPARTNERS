@@ -38,7 +38,7 @@ export default function LandingNav() {
           >
             Home
           </Link>
-          <a href="#contact" className={`btn px-5 py-2.5 text-[0.92rem] ${light ? "btn-primary" : "bg-white text-ink hover:-translate-y-0.5"}`}>
+          <a href="#contact" className={`btn px-5 py-2.5 text-[0.92rem] ${light ? "btn-primary" : "bg-white text-onlight hover:-translate-y-0.5"}`}>
             Get started
           </a>
         </div>

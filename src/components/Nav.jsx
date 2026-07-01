@@ -49,7 +49,7 @@ export default function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="#services"
-            className={`btn hidden px-5 py-2.5 text-[0.92rem] sm:inline-flex ${light ? "btn-primary" : "bg-white text-ink hover:-translate-y-0.5"}`}
+            className={`btn hidden px-5 py-2.5 text-[0.92rem] sm:inline-flex ${light ? "btn-primary" : "bg-white text-onlight hover:-translate-y-0.5"}`}
           >
             View Services
           </a>

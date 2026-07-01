@@ -27,7 +27,7 @@ function SeoVisual() {
   const bars = [35, 52, 48, 66, 72, 88];
   return (
     <Shell>
-      <div className="rounded-3xl border border-line bg-white p-5 shadow-card">
+      <div className="rounded-3xl border border-line bg-surface p-5 shadow-card">
         <div className="flex items-center justify-between">
           <span className="font-display text-[1rem] uppercase text-ink">Search results</span>
           <span className="rounded-full bg-[#16A34A]/10 px-2.5 py-1 font-body text-[0.7rem] font-semibold text-[#16A34A]">Top ranked</span>
@@ -70,12 +70,12 @@ function SeoVisual() {
 function WebVisual() {
   return (
     <Shell>
-      <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+      <div className="overflow-hidden rounded-3xl border border-line bg-surface shadow-card">
         <div className="flex items-center gap-2 border-b border-line bg-paper2 px-4 py-3">
           <span className="h-2.5 w-2.5 rounded-full bg-line2" />
           <span className="h-2.5 w-2.5 rounded-full bg-line2" />
           <span className="h-2.5 w-2.5 rounded-full bg-line2" />
-          <span className="ml-3 flex-1 truncate rounded-full bg-white px-3 py-1 font-body text-[0.72rem] text-muted">yourbusiness.com.au</span>
+          <span className="ml-3 flex-1 truncate rounded-full bg-paper2 px-3 py-1 font-body text-[0.72rem] text-muted">yourbusiness.com.au</span>
         </div>
         <div className="p-6">
           <div className="h-6 w-2/3 rounded bg-ink/80" />
@@ -87,7 +87,7 @@ function WebVisual() {
           </div>
         </div>
       </div>
-      <div className="absolute -bottom-5 -right-4 flex items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 shadow-card">
+      <div className="absolute -bottom-5 -right-4 flex items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3 shadow-card">
         <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent text-white">
           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.6"><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </span>

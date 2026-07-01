@@ -101,7 +101,7 @@ export default function Results() {
 
             {pages > 1 && (
               <div className="mt-8 flex items-center justify-center gap-4">
-                <button onClick={() => go(-1)} aria-label="Previous reviews" className="grid h-11 w-11 flex-none place-items-center rounded-full border border-line2 text-ink transition hover:bg-black/[0.04]">
+                <button onClick={() => go(-1)} aria-label="Previous reviews" className="grid h-11 w-11 flex-none place-items-center rounded-full border border-line2 text-ink transition hover:bg-white/[0.06]">
                   <Chevron dir="left" />
                 </button>
                 <div className="flex items-center gap-2">
@@ -114,7 +114,7 @@ export default function Results() {
                     />
                   ))}
                 </div>
-                <button onClick={() => go(1)} aria-label="Next reviews" className="grid h-11 w-11 flex-none place-items-center rounded-full border border-line2 text-ink transition hover:bg-black/[0.04]">
+                <button onClick={() => go(1)} aria-label="Next reviews" className="grid h-11 w-11 flex-none place-items-center rounded-full border border-line2 text-ink transition hover:bg-white/[0.06]">
                   <Chevron dir="right" />
                 </button>
               </div>

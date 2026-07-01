@@ -26,7 +26,7 @@ function PlanGrid({ plans, terms, serviceKey, onEnquire, onLanding }) {
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 220, damping: 22 }}
             className={`relative flex h-full flex-col rounded-2xl border p-8 ${
-              p.popular ? "border-accent bg-white shadow-card ring-1 ring-accent/30" : "border-line bg-white shadow-soft"
+              p.popular ? "border-accent bg-surface shadow-card ring-1 ring-accent/30" : "border-line bg-surface shadow-soft"
             }`}
           >
             {p.popular && (
@@ -101,9 +101,9 @@ function CarePlanBanner({ onEnquire, onLanding }) {
           <p className="mt-3 font-body text-[0.98rem] text-white/70">{carePlan.desc}</p>
         </div>
         {onLanding ? (
-          <a href="#contact" onClick={() => onEnquire && onEnquire("webdev")} className="btn shrink-0 bg-white px-7 py-3.5 text-ink hover:-translate-y-0.5 hover:bg-white/90">Add a Care Plan</a>
+          <a href="#contact" onClick={() => onEnquire && onEnquire("webdev")} className="btn shrink-0 bg-white px-7 py-3.5 text-onlight hover:-translate-y-0.5 hover:bg-white/90">Add a Care Plan</a>
         ) : (
-          <Link to="/webdev" className="btn shrink-0 bg-white px-7 py-3.5 text-ink hover:-translate-y-0.5 hover:bg-white/90">Add a Care Plan</Link>
+          <Link to="/webdev" className="btn shrink-0 bg-white px-7 py-3.5 text-onlight hover:-translate-y-0.5 hover:bg-white/90">Add a Care Plan</Link>
         )}
       </div>
     </div>
@@ -130,7 +130,7 @@ export default function Packages({ onEnquire, defaultTab = "leads", hideTabs = f
         {/* tabs */}
         {!hideTabs && (
           <Reveal delay={0.06}>
-            <div className="mx-auto mt-8 flex w-fit max-w-full items-center gap-1 overflow-x-auto rounded-full border border-line bg-white p-1.5 shadow-soft">
+            <div className="mx-auto mt-8 flex w-fit max-w-full items-center gap-1 overflow-x-auto rounded-full border border-line bg-surface p-1.5 shadow-soft">
               {tabs.map((t) => (
                 <button
                   key={t.key}

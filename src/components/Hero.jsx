@@ -43,7 +43,7 @@ export default function Hero() {
             </motion.ul>
 
             <motion.div {...rise(0.3)} className="mt-9 flex flex-wrap gap-3.5">
-              <a href="#contact" className="btn bg-white px-7 py-4 text-[1.02rem] text-ink hover:-translate-y-0.5 hover:bg-white/90">
+              <a href="#contact" className="btn bg-white px-7 py-4 text-[1.02rem] text-onlight hover:-translate-y-0.5 hover:bg-white/90">
                 Claim your area <Arrow />
               </a>
               <a href="#how" className="btn border border-white/30 px-7 py-4 text-[1.02rem] text-white hover:bg-white/10">See how it works</a>
@@ -56,10 +56,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* white stats card, Newport style */}
-        <motion.div {...rise(0.42)} className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-line2 sm:grid-cols-3">
+        {/* stats card band */}
+        <motion.div {...rise(0.42)} className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
           {stats.map((s) => (
-            <div key={s.label} className="bg-white px-7 py-7">
+            <div key={s.label} className="bg-surface px-7 py-7">
               <div className="font-display text-[2.6rem] leading-none text-accent">
                 <Counter to={s.value} prefix={s.prefix || ""} suffix={s.suffix || ""} />
               </div>

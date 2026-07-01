@@ -48,7 +48,7 @@ export default function ServiceLanding({ slug }) {
                   ))}
                 </ul>
                 <div className="mt-9 flex flex-wrap gap-3.5">
-                  <a href="#contact" className="btn bg-white px-7 py-4 text-[1.02rem] text-ink hover:-translate-y-0.5 hover:bg-white/90">Get started</a>
+                  <a href="#contact" className="btn bg-white px-7 py-4 text-[1.02rem] text-onlight hover:-translate-y-0.5 hover:bg-white/90">Get started</a>
                   <a href="#pricing" className="btn border border-white/30 px-7 py-4 text-[1.02rem] text-white hover:bg-white/10">See pricing</a>
                 </div>
               </div>
