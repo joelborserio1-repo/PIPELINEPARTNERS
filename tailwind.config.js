@@ -12,9 +12,9 @@ export default {
         surface2: "#faf9f7",
         line: "rgba(10,11,14,0.10)",
         line2: "rgba(10,11,14,0.15)",
-        accent: "#1E40AF",
-        accent2: "#1E3A8A",
-        accentDeep: "#172554",
+        accent: "#FF6A1A",
+        accent2: "#d2480a",
+        accentDeep: "#17140f",
         cream: "#0a0a0b",
         muted: "#56575f",
         faint: "#8a8b93",
@@ -26,9 +26,9 @@ export default {
       },
       maxWidth: { wrap: "1200px" },
       boxShadow: {
-        glow: "0 18px 50px -16px rgba(30,64,175,0.5)",
-        card: "0 18px 50px -24px rgba(10,11,14,0.18)",
-        soft: "0 2px 8px rgba(10,11,14,0.04), 0 16px 40px -22px rgba(10,11,14,0.18)",
+        glow: "0 10px 26px -12px rgba(255,106,26,0.35)",
+        card: "0 8px 24px -18px rgba(10,11,14,0.12)",
+        soft: "0 1px 2px rgba(10,11,14,0.04)",
       },
       keyframes: {
         floatglow: {

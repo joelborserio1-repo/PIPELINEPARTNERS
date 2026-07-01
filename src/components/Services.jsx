@@ -31,7 +31,7 @@ export default function Services() {
             transition={{ type: "spring", stiffness: 220, damping: 22 }}
             className="card relative overflow-hidden p-8 md:p-10"
           >
-            <div className="absolute right-0 top-0 h-56 w-56 -translate-y-1/3 translate-x-1/3 rounded-full bg-[radial-gradient(circle,rgba(30,64,175,0.14),transparent_60%)] blur-2xl" />
+            <div className="absolute right-0 top-0 h-56 w-56 -translate-y-1/3 translate-x-1/3 rounded-full bg-[radial-gradient(circle,rgba(255,106,26,0.07),transparent_60%)] blur-2xl" />
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
               <div>
                 <div className="flex items-center gap-4">

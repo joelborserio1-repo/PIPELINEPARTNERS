@@ -5,7 +5,7 @@ function Shell({ children }) {
   const reduce = useReducedMotion();
   return (
     <div className="relative mx-auto w-full max-w-[460px]">
-      <div aria-hidden="true" className="absolute -inset-6 -z-10 rounded-[40px] bg-[radial-gradient(circle_at_70%_20%,rgba(30,64,175,0.18),transparent_60%)] blur-xl" />
+      <div aria-hidden="true" className="absolute -inset-6 -z-10 rounded-[40px] bg-[radial-gradient(circle_at_70%_20%,rgba(255,106,26,0.10),transparent_60%)] blur-xl" />
       <motion.div
         initial={reduce ? false : { opacity: 0, y: 24, scale: 0.98 }}
         animate={reduce ? {} : { opacity: 1, y: 0, scale: 1 }}

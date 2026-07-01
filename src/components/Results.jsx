@@ -74,7 +74,7 @@ export default function Results() {
 
         <Reveal delay={0.08}>
           <div className="relative mt-12">
-            <div aria-hidden="true" className="absolute -inset-x-4 -top-6 -z-10 h-56 rounded-[40px] bg-[radial-gradient(circle_at_50%_0%,rgba(30,64,175,0.10),transparent_60%)] blur-xl" />
+            <div aria-hidden="true" className="absolute -inset-x-4 -top-6 -z-10 h-56 rounded-[40px] bg-[radial-gradient(circle_at_50%_0%,rgba(255,106,26,0.06),transparent_60%)] blur-xl" />
             <AnimatePresence mode="wait" custom={dir}>
               <motion.div
                 key={page}

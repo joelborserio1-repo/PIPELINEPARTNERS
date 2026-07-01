@@ -88,7 +88,7 @@ export default function Contact({ service = "general", onService, fixedService }
 
           {/* the form sits in a clean white panel so it reads as a deliberate
               part of the page. Style the form itself in GoHighLevel (font Inter,
-              navy #1E40AF button, rounded fields) to finish the match. */}
+              orange #FF6A1A button, rounded fields) to finish the match. */}
           <div className="mx-auto mt-6 w-full max-w-[880px] overflow-hidden rounded-3xl bg-white p-2 shadow-card sm:p-3">
             <div className="flex items-center justify-between px-4 pb-2 pt-3">
               <span className="font-body text-[0.72rem] font-bold uppercase tracking-[0.14em] text-accent2">Free area check</span>

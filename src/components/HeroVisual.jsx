@@ -18,7 +18,7 @@ export default function HeroVisual() {
   return (
     <div className="relative mx-auto w-full max-w-[460px]">
       {/* soft accent halo behind the card */}
-      <div aria-hidden="true" className="absolute -inset-6 -z-10 rounded-[40px] bg-[radial-gradient(circle_at_70%_20%,rgba(30,64,175,0.18),transparent_60%)] blur-xl" />
+      <div aria-hidden="true" className="absolute -inset-6 -z-10 rounded-[40px] bg-[radial-gradient(circle_at_70%_20%,rgba(255,106,26,0.10),transparent_60%)] blur-xl" />
 
       {/* main card */}
       <motion.div
