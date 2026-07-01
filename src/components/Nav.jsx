@@ -48,10 +48,10 @@ export default function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#contact"
+            href="#services"
             className={`btn hidden px-5 py-2.5 text-[0.92rem] sm:inline-flex ${light ? "btn-primary" : "bg-white text-ink hover:-translate-y-0.5"}`}
           >
-            Claim your area
+            View Services
           </a>
           <button
             className={`grid h-11 w-11 place-items-center rounded-xl border lg:hidden ${light ? "border-line2" : "border-white/30"}`}
@@ -72,8 +72,8 @@ export default function Nav() {
                 {n.label}
               </a>
             ))}
-            <a href="#contact" onClick={() => setOpen(false)} className="btn btn-primary mt-4">
-              Claim your area
+            <a href="#services" onClick={() => setOpen(false)} className="btn btn-primary mt-4">
+              View Services
             </a>
           </div>
         </div>
