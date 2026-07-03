@@ -32,7 +32,12 @@ function OfferCard() {
       <div className="mt-7 space-y-2 border-y border-line py-5 font-body">
         <div className="flex items-center justify-between text-muted">
           <span>Management fee</span>
-          <span className="font-semibold text-ink">${fmt(promoOffer.fee)}/mo</span>
+          <span className="flex items-baseline gap-2">
+            {promoOffer.feeWas && (
+              <span className="font-body text-[0.9rem] text-faint line-through">${fmt(promoOffer.feeWas)}</span>
+            )}
+            <span className="font-semibold text-ink">${fmt(promoOffer.fee)}/mo</span>
+          </span>
         </div>
         <div className="flex items-center justify-between text-muted">
           <span>Ad spend, at cost</span>

@@ -357,6 +357,7 @@ export const promoOffer = {
   name: "The Practice Growth Offer",
   tagline: "New client bookings, guaranteed.",
   fee: 600,
+  feeWas: 1200,
   adSpend: 1000,
   allIn: 1600,
   includes: [
