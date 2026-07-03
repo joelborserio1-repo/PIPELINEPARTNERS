@@ -38,6 +38,7 @@ const pages = [
   { path: "/leadgen", title: landings.leadgen.metaTitle, description: landings.leadgen.metaDesc, kind: "service", serviceName: "Lead Generation", crumb: "Lead Generation" },
   { path: "/seo", title: landings.seo.metaTitle, description: landings.seo.metaDesc, kind: "service", serviceName: "SEO", crumb: "SEO" },
   { path: "/webdev", title: landings.webdev.metaTitle, description: landings.webdev.metaDesc, kind: "service", serviceName: "Web Design and Development", crumb: "Web Design" },
+  { path: "/promo", title: landings.promo.metaTitle, description: landings.promo.metaDesc, kind: "service", serviceName: "Lead Generation for Practitioners", crumb: "Practitioner Offer" },
 ];
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./HomePage.jsx";
 import ServiceLanding from "./components/ServiceLanding.jsx";
+import PromoLanding from "./components/PromoLanding.jsx";
 
 // Scroll to top on route change, or to the hash target if there is one.
 function ScrollManager() {
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/leadgen" element={<ServiceLanding slug="leadgen" />} />
         <Route path="/seo" element={<ServiceLanding slug="seo" />} />
         <Route path="/webdev" element={<ServiceLanding slug="webdev" />} />
+        <Route path="/promo" element={<PromoLanding />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
     </>

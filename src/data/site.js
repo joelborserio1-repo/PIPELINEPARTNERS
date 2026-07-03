@@ -20,6 +20,9 @@ export const formIds = {
   leads: "yP1jbWcsbMe8gaXBFCzL",
   seo: "8wsbaW3xBYg02rr9Qdfg",
   webdev: "VplXzV6XIR8OLahDAuPW",
+  // Paste the /promo practitioner form id here once it is built.
+  // While empty it falls back to the general form.
+  promo: "",
 };
 
 export const formOptions = [
@@ -324,9 +327,73 @@ export const faqs = [
   { q: "Which industries do you cover?", a: "Trades and home services, health and fitness, clinics and practitioners, and other local service businesses. If you are not sure you fit, ask." },
 ];
 
-// Per service landing pages: /leadgen, /seo, /webdev.
+// /promo. A single, aggressive launch offer aimed at service based
+// practitioners: psychologists, physios, counsellors and allied health.
+export const promoIndustries = [
+  "Psychologists",
+  "Physiotherapists",
+  "Counsellors",
+  "Chiropractors",
+  "Osteopaths",
+  "Podiatrists",
+  "Dietitians",
+  "Occupational Therapists",
+  "Speech Pathologists",
+  "Exercise Physiologists",
+  "Remedial Massage",
+  "Naturopaths",
+];
+
+// Practitioner flavoured live leads for the promo hero visual.
+export const promoLeads = [
+  { name: "Emma R.", note: "New client, anxiety support", area: "Newcastle" },
+  { name: "Tom H.", note: "Initial physio assessment", area: "Lake Macquarie" },
+  { name: "Priya S.", note: "Couples counselling enquiry", area: "Central Coast" },
+];
+
+// The single, too good to be true launch offer.
+export const promoOffer = {
+  badge: "Launch offer",
+  name: "The Practice Growth Offer",
+  tagline: "New client bookings, guaranteed.",
+  fee: 600,
+  adSpend: 1000,
+  allIn: 1600,
+  includes: [
+    "1 Google Ads campaign, built and run for you end to end",
+    "Every enquiry sent straight to your CRM and your phone",
+    "Automated follow up that books the client for you",
+    "Conversion tracking and clear monthly reporting",
+    "Exclusive to your practice, never shared with a rival",
+    "A written monthly minimum. No leads, no pay.",
+  ],
+  note: "No setup fee. A 90 day initial term, then month to month. Ad spend billed at cost, never marked up.",
+};
+
+// Per service landing pages: /leadgen, /seo, /webdev, /promo.
 // tab = which Packages tab to show. formKey = which GHL form to embed.
 export const landings = {
+  promo: {
+    slug: "promo",
+    formKey: "promo",
+    eyebrow: "For psychologists, physios and practitioners",
+    h1: "Fill your practice with new client bookings.",
+    sub: "We run the ads, follow up the enquiries and send booked clients straight to you. One simple offer, exclusive to your practice, backed by no leads, no pay.",
+    bullets: [
+      { strong: "Built for practitioners.", rest: "Psychologists, physios, counsellors and allied health." },
+      { strong: "One simple offer.", rest: "$600 management plus $1,000 ad spend. That is it." },
+      { strong: "No leads, no pay.", rest: "A written monthly minimum, or you do not pay." },
+    ],
+    pointsTitle: "Why practices choose this.",
+    points: [
+      { title: "Clients, not clicks", body: "We target people actively searching for your service in your area, then follow up until they book." },
+      { title: "Exclusive to your practice", body: "Your leads are yours alone. We never share or resell them to another practice nearby." },
+      { title: "The risk sits with us", body: "We agree a monthly minimum in writing. Miss it and you only pay for what we actually delivered." },
+    ],
+    guarantee: true,
+    metaTitle: "Lead Generation for Psychologists, Physios and Practitioners | Pipeline Partners",
+    metaDesc: "New client bookings for psychologists, physiotherapists, counsellors and allied health. $600 management plus $1,000 ad spend, exclusive leads, no leads no pay.",
+  },
   leadgen: {
     slug: "leadgen",
     tab: "leads",

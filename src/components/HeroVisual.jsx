@@ -1,13 +1,13 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { IconPhone } from "./icons.jsx";
 
-const leads = [
+const defaultLeads = [
   { name: "Dave M.", note: "Roof replacement quote", area: "Newcastle" },
   { name: "Sarah T.", note: "Burst pipe, urgent", area: "Lake Macquarie" },
   { name: "Jason K.", note: "Switchboard upgrade", area: "Hunter Valley" },
 ];
 
-export default function HeroVisual() {
+export default function HeroVisual({ leads = defaultLeads }) {
   const reduce = useReducedMotion();
   const row = (i) => ({
     initial: reduce ? false : { opacity: 0, y: 14 },
